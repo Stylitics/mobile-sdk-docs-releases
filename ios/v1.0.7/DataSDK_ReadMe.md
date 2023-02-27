@@ -245,8 +245,7 @@ Following are the list of events to track user interaction with the app.
         let engagementTrackingInfo = EngagementsTrackingInfo(event: .jumplink)
         StyliticsDataApis.engagement(trackingInfo: engagementTrackingInfo)
 ```
-Refer below image:</br> 
-![ALt seeHowToWearIt](Screenshots/seeHowToWearIt.png)
+
 
 
 * #### Outfit view event
