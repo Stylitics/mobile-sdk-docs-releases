@@ -129,7 +129,7 @@ If in the Outfits response, *_**on-model-image**_* flag is true & Integrator App
 
 * Below is the Classic Outfit Widget screenshot when Integrator App uses the above configurations.
 
-</br>![Image1](Screenshots/Classic_Outfit_With_Default_Config.png)</br>
+</br>)</br>
 
 ### Custom Configurations:
 
@@ -182,7 +182,7 @@ If in the Outfits response, *_**on-model-image**_* flag is true & Integrator App
 
 * Below is the Classic Outfit Widget screenshot when Integrator App uses the above configurations.
 
-  </br>![Image1](Screenshots/Custom_Classic_outfit_new.png)
+  </br>)
 
 *_**2. With some custom configurations & Listeners:**_*
 
@@ -222,7 +222,7 @@ If Integrator App provides only few custom configurations, UX SDK will take defa
 
 * Below is the Classic Outfit Widget screenshot when Integrator App uses the above configurations.
 
-</br>![Image1](Screenshots/Custom_Classic_outfit_with_some_config.png)
+</br>)
 
 ## Product List Screen
 
@@ -243,7 +243,7 @@ Below are the features for Product List Screen
 
 ### **Product List Screen Configurations**
 
-</br>![Image1](Screenshots/PL_Default_Titles.png)
+</br>)
 
 ### Header
   
@@ -327,7 +327,7 @@ It is recommended that Integrator App provide the **onOutfitItemClick** listener
 
 * Below is the Product List screenshot when Integrator App uses the default configurations
 
-</br>![Image1](Screenshots/PL_Default.png)
+</br>)
 
 ### **Product List Screen from UX SDK with Custom Configurations**
 
@@ -379,7 +379,7 @@ Below are the examples of Product List Screen when Integrator App chooses to use
 ```
 * Below is the Product List screenshot when Integrator App uses the above configurations.
 
-</br>![Image1](Screenshots/PL_All_Config.png)
+</br>)
 
 ### **2. With some custom configurations and listeners**
 
@@ -413,7 +413,7 @@ Below are the examples of Product List Screen when Integrator App chooses to use
 ```
 * Below is the Product List screenshot when Integrator App uses the above configurations.
 
-</br>![Image1](Screenshots/PL_Some_Config.png)
+</br>)
 
 ### **2. Product List Screen From Integrator App**
 
@@ -525,7 +525,7 @@ Below is the code to call your own Product List Screen.
 
 * Below is the Classic Outfit Widget screenshot when Integrator App uses the above configurations.
 
-</br>![Image1](Screenshots/Outfit_widget_Merged.png)</br>
+</br>)</br>
 
 ### Product List Screen with Mix and Match
 
@@ -563,7 +563,7 @@ Below is the code to call your own Product List Screen.
 
 * Below is the Product List screenshot when Integrator App uses the above configurations.
 
-</br>![Image1](Screenshots/PL_Default_Merged.png)</br>
+</br>)</br>
 
 **Classic Outfit Widget with some custom configurations for Product List**
 
@@ -589,4 +589,4 @@ By default Shop CTA is displayed on left and See more options CTA displayed on r
 ```
 * Below is the Product List screenshot when Integrator App uses the above configurations.
 
-</br>![Image1](Screenshots/PL_SeeMore_config_Merged.png)</br>
+</br>)</br>

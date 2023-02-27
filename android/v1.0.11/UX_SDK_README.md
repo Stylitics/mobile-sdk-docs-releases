@@ -25,7 +25,7 @@ Below are the features for Classic Outfit Widget.</br>
 
 ### Classic Outfit Widget Configurations:
 
-![Image1](Screenshots/classic_with_top_label_stl.png)
+)
 
 #### Widget Background
 
@@ -171,7 +171,7 @@ private fun classicOutfitWidgetWithProductListFromSampleApp(outfits: Outfits) {
 
 * Below is the Classic Outfit Widget screenshot when Integrator App uses the above configurations.
 
-</br>![Image1](Screenshots/default_classic_outfit.png)</br>
+</br>)</br>
 
 ### Custom Configurations:
 
@@ -228,7 +228,7 @@ private fun classicDisplayWithAllCustomConfigurations(outfits: Outfits) {
 
 * Below is the Classic Outfit Widget screenshot when Integrator App uses the above configurations.
 
-  </br>![Image1](Screenshots/custom_classic_with_top_label_stl.png)
+  </br>)
 
 </br>*_**2. With some custom configurations & Listeners:**_*
 
@@ -270,7 +270,7 @@ private fun classicDisplayWithSomeCustomConfigurations(outfits: Outfits) {
 
 * Below is the Classic Outfit Widget screenshot when Integrator App uses the above configurations.
 
-</br>![Image1](Screenshots/custom_classic_with_some_config.png)
+</br>)
 
 ## Product List Screen
 
@@ -291,7 +291,7 @@ Below are the features for Product List Screen
 
 ### *_**Product List Screen Configurations**_*
 
-</br>![Image1](Screenshots/default_product_list_with_arrow.png)
+</br>)
 
 #### Header
 
@@ -395,7 +395,7 @@ outfitsRecyclerView.closeProductListScreen()
 ```
 * Below is the Product List screenshot when Integrator App uses the default configurations
 
-</br>![Image1](Screenshots/default_product_list.png)
+</br>)
 
 ### *_**Product List Screen from UX SDK with Custom Configurations**_*
 
@@ -468,7 +468,7 @@ private fun outfitsWithProductListFromUXSDK(outfits: Outfits) {
 
 * Below is the Product List screenshot when Integrator App uses the above configurations.
 
-</br>![Image1](Screenshots/custom_product_list_view_text.png)
+</br>)
 
 **2. With some custom configurations and listeners**
 
@@ -508,7 +508,7 @@ private fun classicDisplayWithProductListFromUXSDK(outfits: Outfits) {
 
 * Below is the Product List screenshot when Integrator App uses the above configurations.
 
-</br>![Image1](Screenshots/custon_product_list_with_button.png)
+</br>)
 
 
 ### 2. Product List Screen From Integrator App
@@ -676,7 +676,7 @@ private fun classicOutfitWidgetWithItemSwapEnabled(outfits: Outfits) {
 
 * Below is the Classic Outfit Widget screenshot when Integrator App uses the above configurations.
 
-</br>![Image1](Screenshots/classic_outfit_mnm.png)
+</br>)
 
 ### 2. Product List Screen with Mix and Match
 
@@ -727,7 +727,7 @@ private fun outfitsWithProductListFromUXSDK(outfits: Outfits) {
 
 * Below is the Product List screenshot when Integrator App uses the above configurations.
 
-</br>![Image1](Screenshots/pl_with_mnm.png)
+</br>)
 
 **Classic Outfit Widget with some custom configurations for Product List**
 
@@ -773,5 +773,5 @@ private fun outfitsWithProductListFromUXSDK(outfits: Outfits) {
 
 * Below is the Product List screenshot when Integrator App uses the above configurations.
 
-</br>![Image1](Screenshots/pl_with_shop_switch_mnm.png)
+</br>)
 

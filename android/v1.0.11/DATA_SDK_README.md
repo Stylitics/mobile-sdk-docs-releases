@@ -227,7 +227,7 @@ Following are the list of events to track user interaction with the app.
 ```
 
 Refer below image:</br>
-</br>![Image1](Screenshots/pdp_screen_top.png)
+</br>)
 
 
 * #### Outfit view event
