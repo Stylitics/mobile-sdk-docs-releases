@@ -1,0 +1,777 @@
+## Stylitics UX SDK
+
+It provides views to display Stylitics data. It also handles invoking of tracking events based on user interaction with these views.
+
+### Features
+
+SDK provides multiple custom view options to Integrator App so it can easily display Stylitics data.
+
+1. Outfits
+    * Classic Outfit Widget
+2. Outfit Items
+    * Product List View
+3. Replacements
+    * Replacement View (Displayed internally from Product List View)
+
+## Classic Outfit Widget
+
+Below are the features for Classic Outfit Widget.</br>
+
+* Configure all the UI elements for each Outfit
+* Handles Outfit 'View' and 'Click' tracking events so Integrator App does not have to do it
+* Provides listeners to Integrator App so they can handle the Outfit View and Click events
+* Configure whether to display Outfit Items directly from SDK or not
+    * When Outfit Items configured to display from SDK, Integrator App can provide configs for it
+
+### Classic Outfit Widget Configurations:
+
+![Image1](Screenshots/classic_with_top_label_stl.png)
+
+#### Widget Background
+
+| Fields | Description | Default Value |
+| ---- | ---- | ---- |
+| widgetBackground | is the widget background drawable | R.drawable.outfit_border|
+
+#### Top Label
+
+| Fields | Description | Default Value |
+| ---- | ---- | ---- |
+| backgroundColor | is the background color of top label and is accessed from drawable resource folder. | R.drawable.top_label_border |
+|fontFamilyAndWeight | is the font style with the font weight and is accessed from the font resource folder | Helvetica Neue Regular |
+| fontSize | is the size in float and internally it is converted into sp | 14f |
+| fontColor | is text color which is accessed from color.xml resource file | #212121 |
+| position | is to change top label position to top left or top right | TopLabelPosition.TOP_LEFT  |
+| paddingVertical | is top and bottom padding of the top label in float and internally it is converted to dp | 6f |
+| paddingHorizontal | is left and right padding of the top label in float and internally it is converted to dp | 16f |
+
+#### Bottom Label
+
+| Fields | Description | Default Value |
+| ---- | ---- | ---- |
+| title | to set the title of the label | View Detail |
+| fontFamilyAndWeight | is the font style with the font weight and is accessed from the font resource folder | Helvetica Neue Regular |
+| fontSize | is the font size in float and internally it is converted into sp | 14f |
+| fontColor | is text color and is accessed from color.xml resource file | #212121 |
+
+#### Shop The Model
+
+| Fields | Description | Default Value |
+| ---- | ---- | ---- |
+| name | is the name of image to be displayed for Shop the model badge and is accessed from drawable resource folder | Mandatory |
+| position | is to change the badge position to the Top Left, Top Right, Bottom Left and Bottom Right. 16dp to the top and the left is the default padding | ShopTheModelPosition.TOP_LEFT |
+| width | is the width of image view in float and internally it is converted to dp | 60f |
+| height | is the height of image view in float and internally it is converted to dp | 60f |
+
+### Default Configurations:
+
+* Below are the examples of Classic Outfit Widget when Integrator App chooses to use default UI configurations.</br>
+
+* The Classic Outfit UI component can be implemented in below different ways.
+    1. Product List enabled from SDK
+    2. Product List disabled from SDK
+    3. Configure Event Listeners
+    5. Shop The Model
+
+*_**XML**_*
+
+```xml
+<com.stylitics.ui.StyliticsUIApi 
+        android:id="@+id/outfitsRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_400" />
+```
+
+*_**Kotlin**_*
+
+**1. Product List enabled from SDK:**
+
+When product list is enabled from UX SDK and Integrator App does not provide configurations, it will take default configurations from SDK.
+
+```kotlin
+val outfitsRecyclerView = findViewById<StyliticsUIApi>(R.id.outfitsRecyclerView)
+
+private fun classicOutfitWidgetWithProductListFromUXSDK(outfits: Outfits) {
+    outfitsRecyclerView.load(
+        outfits,
+        OutfitsTemplate.Classic(),
+        ProductListScreenState.Enable(
+            productListScreenConfig = ProductListScreenConfig(
+                productListTemplate = ProductListTemplate.Standard(
+                    productListListener = ProductListListener(
+                        onOutfitItemClick = { outfitInfo, outfitItemInfo ->
+                            Toast.makeText(this, getString(R.string.outfit_item_clicked).plus(" ${outfitItemInfo.position}"), Toast.LENGTH_LONG).show()
+                        }
+                    )
+                )
+            )
+        )
+    )
+}
+```
+
+**2. Product List disabled from SDK:**
+
+```kotlin
+val outfitsRecyclerView = findViewById<StyliticsUIApi>(R.id.outfitsRecyclerView)
+
+private fun classicOutfitWidgetWithProductListFromIntegrator(outfits: Outfits) {
+    outfitsRecyclerView.load(
+        outfits,
+        OutfitsTemplate.Classic(),
+        ProductListScreenState.Disable
+    )
+}
+```
+
+**3. Configure Event Listeners:**
+
+```kotlin
+val outfitsRecyclerView = findViewById<StyliticsUIApi>(R.id.outfitsRecyclerView)
+
+private fun classicOutfitWidgetWithProductListFromIntegrator(outfits: Outfits) {
+    outfitsRecyclerView.load(
+        outfits,
+        OutfitsTemplate.Classic(
+            classicListener = ClassicListener(
+                onClick = { outfitInfo ->
+                    Log.i("OutfitEvent", " Outfit click event triggered. ${outfitInfo.outfit.id}")
+                },
+                onView = { outfitInfo ->
+                    Log.i("OutfitEvent", " Outfit view event triggered. ${outfitInfo.outfit.id}")
+                }
+            )
+        ),
+        ProductListScreenState.Disable
+    )
+}
+```
+
+**4. Shop The Model:**
+
+If in the Outfits response, *_**on-model-image**_* flag is true & Integrator App provides a valid image for Shop The Model it will be displayed for the Outfit.
+
+```kotlin
+val outfitsRecyclerView = findViewById<StyliticsUIApi>(R.id.outfitsRecyclerView)
+
+private fun classicOutfitWidgetWithProductListFromSampleApp(outfits: Outfits) {
+    outfitsRecyclerView.load(
+        outfits,
+        OutfitsTemplate.Classic(
+            classicConfig = ClassicConfig(
+                shopTheModel = ShopTheModel(name = R.drawable.shop_the_look)
+            )
+        ),
+        ProductListScreenState.Disable
+    )
+}
+```
+
+**Default Classic Outfit Widget Screen**
+
+* Below is the Classic Outfit Widget screenshot when Integrator App uses the above configurations.
+
+</br>![Image1](Screenshots/default_classic_outfit.png)</br>
+
+### Custom Configurations:
+
+* Integrator App can customise some or all configurations & implement listeners.
+* Below are the examples of Classic Outfit Widget when Integrator App customises configurations.
+
+*_**1. With all configurations & Listeners:**_*
+
+```kotlin
+val outfitsRecyclerView = findViewById<StyliticsUIApi>(R.id.outfitsRecyclerView)
+
+private fun classicDisplayWithAllCustomConfigurations(outfits: Outfits) {
+    outfitsRecyclerView.load(
+        outfits, OutfitsTemplate.Classic(
+            classicConfig = ClassicConfig(
+                widgetBackground = R.drawable.outfit_border,
+                topLabel = ClassicConfig.TopLabel(
+                    backgroundColor = R.drawable.top_label_border,
+                    position = TopLabelPosition.TOP_RIGHT,
+                    fontFamilyAndWeight = R.font.amaranth,
+                    fontSize = 14f,
+                    fontColor = R.color.dark_brown,
+                    paddingVertical = 8f,
+                    paddingHorizontal = 10f
+                ),
+                bottomLabel = ClassicConfig.BottomLabel(
+                    title = "View More",
+                    fontFamilyAndWeight = R.font.amaranth,
+                    fontColor = R.color.black,
+                    fontSize = 15f
+                ),
+                shopTheModel = ShopTheModel(
+                    name = R.drawable.shop_the_look,
+                    position = ShopTheModelPosition.BOTTOM_LEFT,
+                    width = 80f,
+                    height = 80f
+                )
+            ),
+            classicListener = ClassicListener(
+                onClick = { outfitInfo ->
+                    Log.i("OutfitEvent", " Outfit click event triggered. ${outfitInfo.outfit.id}")
+                },
+                onView = { outfitInfo ->
+                    Log.i("OutfitEvent", " Outfit view event triggered. ${outfitInfo.outfit.id}")
+                }
+            )
+        ),
+        ProductListScreenState.Disable
+    )
+}         
+```
+
+*_**Note**_* : For Shop the model configuration, if height and width provided by Integrator has different aspect ratio than the Image, it will leave some default space around the image and the image will be at the center.
+
+* Below is the Classic Outfit Widget screenshot when Integrator App uses the above configurations.
+
+  </br>![Image1](Screenshots/custom_classic_with_top_label_stl.png)
+
+</br>*_**2. With some custom configurations & Listeners:**_*
+
+If Integrator App provides only few configurations, UX SDK will take default configurations for missing fields.
+
+```kotlin
+val outfitsRecyclerView = findViewById<StyliticsUIApi>(R.id.outfitsRecyclerView)
+
+private fun classicDisplayWithSomeCustomConfigurations(outfits: Outfits) {
+    outfitsRecyclerView.load(
+        outfits, OutfitsTemplate.Classic(
+            classicConfig = ClassicConfig(
+                topLabel = ClassicConfig.TopLabel(
+                    backgroundColor = R.drawable.top_label_border,
+                    position = TopLabelPosition.TOP_RIGHT,
+                    fontSize = 14f,
+                    fontColor = R.color.dark_brown
+                ),
+                bottomLabel = ClassicConfig.BottomLabel(
+                    title = "View More",
+                    fontFamilyAndWeight = R.font.amaranth,
+                    fontSize = 15f
+                ),
+                shopTheModel = ShopTheModel(
+                    name = R.drawable.shop_the_look,
+                    position = ShopTheModelPosition.BOTTOM_LEFT
+                )
+            ),
+            classicListener = ClassicListener(
+                onClick = { outfitInfo ->
+                    Log.i("OutfitEvent", " Outfit click event triggered. ${outfitInfo.outfit.id}")
+                }
+            )
+        ),
+        ProductListScreenState.Disable
+    )
+}         
+```
+
+* Below is the Classic Outfit Widget screenshot when Integrator App uses the above configurations.
+
+</br>![Image1](Screenshots/custom_classic_with_some_config.png)
+
+## Product List Screen
+
+* This screen is displayed when user clicks on an outfit.
+* There are two different ways to show Product List Screen.
+    1. Product List Screen From UX SDK
+    2. Product List Screen From Integrator App
+
+### 1. Product List Screen From UX SDK
+
+Below are the features for Product List Screen 
+* Configure all the UI elements for Product List Screen
+* Handles Outfit Item 'View' and 'Click' tracking events so Integrator App does not have to do it
+* Provides listeners to Integrator App so they can handle the Outfit Item View and Click events
+* If Integrator App does not implement Outfit Item click listener, a Web View is opened when user selects an Outfit Item
+
+**Note**: It is recommended that Integrator App always provides the **onOutfitItemClick** listener implementation.
+
+### *_**Product List Screen Configurations**_*
+
+</br>![Image1](Screenshots/default_product_list_with_arrow.png)
+
+#### Header
+
+| Fields | Description | Default Value |
+| ---- | ---- | ---- |
+| title | to set the header of the screen | Product List |
+| fontFamilyAndWeight | is the font style with the font weight and is accessed from the font resource folder | R.font.helvetica_neue_medium |
+| fontSize | is the font size in float and internally it is converted into SP | 16f |
+| fontColor | is text color and is accessed from color.xml resource file | #212121 |
+
+#### Item Name
+
+| Fields | Description | Default Value |
+| ---- | ---- | ---- |
+| fontFamilyAndWeight | is text font style with the font weight and is accessed from the font resource folder | R.font.helvetica_neue_medium |
+| fontSize | is font size in float and internally it is converted into SP | 16f |
+| fontColor | is text color which is accessed from color.xml resource file | #212121 |
+
+#### Item Sale Price
+
+| Fields | Description | Default Value |
+| ---- | ---- | ---- |
+| fontFamilyAndWeight | is the text font style with the font weight and is accessed from the font resource folder | R.font.helvetica_neue_medium |
+| fontSize | is font size in float and internally it is converted into sp | 16f |
+| fontColor | is ItemSalePrice text color which is accessed from color.xml resource file | #212121 |
+| style | to show or hide the Strike Through Price | PriceStrikeThrough.SHOW |
+| slashFontColor | is strike through price text color which is accessed from color.xml resource file | #757575 |
+| decimal | is the number of digits to show after decimal point and it is accepted as a integer | 0 |
+
+#### Shop CTA
+
+It can be used as a Text or Button, below are the configurations for both
+
+* *_**Shop Text**_*
+
+| Fields | Description | Default Value |
+| ---- | ---- | ---- |
+| title | to set the title of the text | SHOP |
+| fontFamilyAndWeight | is the text font style with the font weight and is accessed from the font resource folder | R.font.helvetica_neue_medium |
+| fontSize | is font size in float and internally it is converted into sp | 14f |
+| fontColor | is text color which is accessed from color.xml resource file | #212121 |
+| position | is to change shop text position to bottom left or bottom right | ShopViewPosition.LEFT |
+
+* *_**Shop Button**_*
+
+| Fields | Description | Default Value |
+| ---- | ---- | ---- |
+| title | to set the title of the text | Shop |
+| fontFamilyAndWeight | is the text font style with the font weight and is accessed from the font resource folder | R.font.helvetica_neue_medium |
+| buttonBackgroundColor | is the shop button background drawable | R.drawable.shop_button_background |
+| fontSize | is font size in float and internally it is converted into sp | 14f |
+| fontColor | is text color which is accessed from color.xml resource file | #212121 |
+| paddingVertical | is top and bottom padding of the button in float and internally it is converted to dp | 8f |
+| paddingHorizontal | is left and right padding of the button in float and internally it is converted to dp | 16f |
+
+### *_**Product List Screen from UX SDK with Default Configurations**_*
+
+Below is the example of Product List Screen when Integrator App chooses to use default UI configurations.
+
+*_**XML**_*
+
+```xml
+<com.stylitics.ui.StyliticsUIApi 
+        android:id="@+id/outfitsRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_400" />
+```
+
+*_**Kotlin**_*
+
+Below is the code to access Product List Screen from UX SDK.
+
+It is recommended that Integrator App provide the **onOutfitItemClick** listener implementation.
+
+```kotlin
+val outfitsRecyclerView = findViewById<StyliticsUIApi>(R.id.outfitsRecyclerView)
+
+private fun classicOutfitWidgetWithProductListFromUXSDK(outfits: Outfits) {
+    outfitsRecyclerView.load(
+        outfits,
+        OutfitsTemplate.Classic(),
+        ProductListScreenState.Enable(
+            productListScreenConfig = ProductListScreenConfig(
+                productListTemplate = ProductListTemplate.Standard(
+                    productListListener = ProductListListener(
+                        onOutfitItemClick = { outfitInfo, outfitItemInfo ->
+                            Toast.makeText(this, getString(R.string.outfit_item_clicked).plus(" ${outfitItemInfo.position}"), Toast.LENGTH_LONG).show()
+                        }
+                    )
+                )
+            )
+        )
+    )
+}
+```
+* When Product List Screen is displayed from UX SDK, Integrator App can choose to close it using below code.
+
+```Kotlin
+val outfitsRecyclerView = findViewById<StyliticsUIApi>(R.id.outfitsRecyclerView)
+outfitsRecyclerView.closeProductListScreen()
+```
+* Below is the Product List screenshot when Integrator App uses the default configurations
+
+</br>![Image1](Screenshots/default_product_list.png)
+
+### *_**Product List Screen from UX SDK with Custom Configurations**_*
+
+Below are the examples of Product List Screen when Integrator App chooses to use custom configurations.
+
+*_**XML**_*
+
+```xml
+<com.stylitics.ui.StyliticsUIApi 
+        android:id="@+id/outfitsRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_400" />
+```
+
+*_**Kotlin**_*
+
+**1. With All Custom Configurations and Listeners**
+
+```kotlin
+val outfitsRecyclerView = findViewById<StyliticsUIApi>(R.id.outfitsRecyclerView)
+
+private fun outfitsWithProductListFromUXSDK(outfits: Outfits) {
+    outfitsRecyclerView.load(
+        outfits,
+        OutfitsTemplate.Classic(),
+        ProductListScreenState.Enable(
+            productListScreenConfig = ProductListScreenConfig(
+                itemListHeader = ProductListScreenConfig.ItemListHeader(
+                    title = "Products",
+                    fontFamilyAndWeight = R.font.amaranth,
+                    fontColor = R.color.teal_700,
+                    fontSize = 26f
+                ),
+                productListTemplate = ProductListTemplate.Standard(
+                    productListConfig = ProductListConfig(
+                        itemName = ProductListConfig.ItemName(
+                            fontFamilyAndWeight = R.font.amaranth,
+                            fontSize = 19f,
+                            fontColor = R.color.black
+                        ),
+                        itemSalePrice = ProductListConfig.ItemSalePrice(
+                            fontFamilyAndWeight = R.font.amaranth,
+                            fontSize = 18f,
+                            fontColor = R.color.black,
+                            slashFontColor = R.color.teal_700,
+                            style = PriceStrikeThrough.SHOW,
+                            decimal = 2
+                        ),
+                        shop = ShopViewType.Text(
+                            title = "Buy Now",
+                            fontFamilyAndWeight = R.font.amaranth,
+                            fontSize = 20f,
+                            fontColor = R.color.brown
+                        )
+                    ),
+                    productListListener = ProductListListener(
+                        onOutfitItemClick = { outfitInfo, outfitItemInfo ->
+                            Toast.makeText(this, getString(R.string.outfit_item_clicked).plus(" ${outfitItemInfo.position}"), Toast.LENGTH_LONG).show()
+                        },
+                        onOutfitItemView = { outfitInfo, outfitItemInfo ->
+                            Log.i("OutfitItemEvent", " OutfitItem view event triggered. ${outfitInfo.outfit.id}, ${outfitItemInfo.outfitItem.name}")
+                        }
+                    )
+                )
+            )
+        )
+    )
+}
+```
+
+* Below is the Product List screenshot when Integrator App uses the above configurations.
+
+</br>![Image1](Screenshots/custom_product_list_view_text.png)
+
+**2. With some custom configurations and listeners**
+
+```kotlin
+val outfitsRecyclerView = findViewById<StyliticsUIApi>(R.id.outfitsRecyclerView)
+
+private fun classicDisplayWithProductListFromUXSDK(outfits: Outfits) {
+    outfitsRecyclerView.load(
+        outfits,
+        OutfitsTemplate.Classic(),
+        ProductListScreenState.Enable(
+            productListScreenConfig = ProductListScreenConfig(
+                productListTemplate = ProductListTemplate.Standard(
+                    productListConfig = ProductListConfig(
+                        itemSalePrice = ProductListConfig.ItemSalePrice(
+                            fontFamilyAndWeight = R.font.amaranth,
+                            slashFontColor = R.color.teal_700,
+                            fontSize = 18f
+                        ),
+                        shop = ShopViewType.Button(
+                            fontFamilyAndWeight = R.font.amaranth,
+                            fontSize = 18f,
+                            fontColor = R.color.gray_800
+                        )
+                    ),
+                    productListListener = ProductListListener(
+                        onOutfitItemClick = { outfitInfo, outfitItemInfo ->
+                            Toast.makeText(this, getString(R.string.outfit_item_clicked).plus(" ${outfitItemInfo.position}"), Toast.LENGTH_LONG).show()
+                        }
+                    )
+                )
+            )
+        )
+    )
+}
+```
+
+* Below is the Product List screenshot when Integrator App uses the above configurations.
+
+</br>![Image1](Screenshots/custon_product_list_with_button.png)
+
+
+### 2. Product List Screen From Integrator App
+
+If Integrator App wants to implement their own Product List Screen, they need to implement Outfit click listener as shown below and create Activity/Fragment by their own.
+
+```kotlin
+val outfitsRecyclerView = findViewById<StyliticsUIApi>(R.id.outfitsRecyclerView)
+
+private fun classicDisplayWithProductListFromIntegrator(outfits: Outfits) {
+    outfitsRecyclerView.load(
+        outfits,
+        OutfitsTemplate.Classic(
+            classicListener = ClassicListener(
+                onClick = { outfitInfo ->
+                    //Invoke your own Product List Screen here
+                    showProductList(outfitInfo.outfit)
+                }
+            )
+        ),
+        ProductListScreenState.Disable
+    )
+}
+```
+
+Integrator can create their own Product List View or access and implement it from UX SDK as given below.
+
+#### 1. Product List View with default configurations
+
+Below is the code to call your own Product List Screen. 
+
+```Kotlin
+private fun showProductList(outfit: Outfit) {
+    val outfitItemsFragment = OutfitItemsFragment.newInstance(outfit)
+    outfitItemsFragment.show(supportFragmentManager, outfitItemsFragment.tag)
+}
+```
+
+**OutfitItemsFragment** is the fragment class to show Product List Screen
+
+Add below xml code to your Fragments xml file
+
+*_**XML**_*
+
+```xml
+<com.stylitics.ui.StyliticsUIApi 
+        android:id="@+id/outfitItemsRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_400" />
+```
+
+*_**Kotlin**_*
+
+To load the Product List invoke below method from Fragments **onCreateView**. 
+
+```Kotlin
+val itemView: View = inflater.inflate(R.layout.outfit_items_fragment, container, false)
+val outfitsRecyclerView = itemView.findViewById<StyliticsUIApi>(R.id.outfitsRecyclerView)
+
+private fun updateViews(itemView: View) {
+    lifecycleScope.launch {
+        itemFragmentViewModel.outfit.collect { outfit ->
+            outfitItemsRecyclerView.load(
+                outfit,
+                ProductListTemplate.Standard(
+                    productListListener = ProductListListener(
+                        onOutfitItemClick = { outfitInfo, outfitItemInfo ->
+                            Toast.makeText(context, getString(R.string.outfit_item_clicked).plus(" ${outfitItemInfo.position}"), Toast.LENGTH_LONG).show()
+                        }
+                    )
+                )
+            )
+        }
+    }
+}
+```
+#### 2. Product List View with custom configurations
+
+```Kotlin
+val itemView: View = inflater.inflate(R.layout.outfit_items_fragment, container, false)
+val outfitsRecyclerView = itemView.findViewById<StyliticsUIApi>(R.id.outfitsRecyclerView)
+
+private fun updateViews(itemView: View) {
+    lifecycleScope.launch {
+        itemFragmentViewModel.outfit.collect { outfit ->
+            itemView.outfitItemsRecyclerView.load(
+                outfit,
+                ProductListTemplate.Standard(
+                    productListConfig = ProductListConfig(
+                        itemName = ProductListConfig.ItemName(
+                            fontFamilyAndWeight = R.font.amaranth,
+                            fontSize = 19f,
+                            fontColor = R.color.black
+                        ),
+                        itemSalePrice = ProductListConfig.ItemSalePrice(
+                            fontFamilyAndWeight = R.font.amaranth,
+                            fontSize = 18f,
+                            fontColor = R.color.black,
+                            slashFontColor = R.color.teal_700,
+                            style = PriceStrikeThrough.SHOW,
+                            decimal = 2
+                        ),
+                        shop = ShopViewType.Text(
+                            title = "Buy",
+                            fontFamilyAndWeight = R.font.amaranth,
+                            fontSize = 18f,
+                            fontColor = R.color.gray_800
+                        )
+                    ),
+                    productListListener = ProductListListener(
+                        onOutfitItemClick = { outfitInfo, outfitItemInfo ->
+                            Toast.makeText(context, getString(R.string.outfit_item_clicked).plus(" ${outfitItemInfo.position}"), Toast.LENGTH_LONG).show()
+                        },
+                        onOutfitItemView = { outfitInfo, outfitItemInfo ->
+                            Log.i("OutfitItemEvent", " OutfitItem view event triggered. ${outfitInfo.outfit.id}, ${outfitItemInfo.outfitItem.name}")
+                        }
+                    )
+                )
+            )
+        }
+    }
+}
+```
+
+## Mix and Match (MnM)
+
+* Mix and Match (MnM) feature can be enabled or disabled from Integrator App
+* [Data SDK](DATA_SDK_README.md#mix-and-match) has more details to enable Mix & Match
+* When Mix and Match feature is enabled, user can swap items from -
+    1. Classic Outfit Widget
+    2. Product List View
+    
+### 1. Classic Outfit Widget with Mix and Match enabled
+
+ * When Mix and Match is enabled
+    * Swap action is disabled by default but Integrator can enable it
+    * Handles item swap tracking event and exposes its listener to Integrator App, for item swap event
+ * Below is the example to enable swap action and implement the swap listener
+ 
+*_**XML**_*
+
+```xml
+<com.stylitics.ui.StyliticsUIApi 
+        android:id="@+id/outfitsRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_400" />
+```
+
+*_**Kotlin**_*
+ ```Kotlin
+val outfitsRecyclerView = findViewById<StyliticsUIApi>(R.id.outfitsRecyclerView)
+
+private fun classicOutfitWidgetWithItemSwapEnabled(outfits: Outfits) {
+    outfitsRecyclerView.load(
+        outfits, OutfitsTemplate.Classic(
+            classicListener = ClassicListener(
+                onItemSwap = { outfitId, oldItemId, newItemId ->
+                    Log.i("ItemSwapEvent", "Event: Swap, OutfitId: $outfitId, OldItemId: $oldItemId, NewItemId: $newItemId")
+                }),
+            isItemSwapEnabled = true
+        )
+    )
+}
+```
+
+* Below is the Classic Outfit Widget screenshot when Integrator App uses the above configurations.
+
+</br>![Image1](Screenshots/classic_outfit_mnm.png)
+
+### 2. Product List Screen with Mix and Match
+
+* When Mix and Match is enabled
+    * See more options CTA will be displayed for each Outfit Item having Replacement Items
+    * User can swap item from replacement row in Product List
+    * Handles item swap tracking event and exposes its listener to Integrator App, for item swap event
+
+#### See More Options
+
+| Fields | Description | Default Value |
+| ---- | ---- | ---- |
+| title | is the title of text | 'See more options' |
+| fontFamilyAndWeight | is the text font style with the font weight and is accessed from the font resource folder | R.font.helvetica_neue_regular |
+|  fontSize| is font size in float and internally it is converted into sp | 12f |
+| fontColor | is text color which is accessed from color.xml resource file | #212121 |
+
+**MnM with Default Configurations**
+
+*_**Kotlin**_*
+
+ ```Kotlin
+val outfitsRecyclerView = findViewById<StyliticsUIApi>(R.id.outfitsRecyclerView)
+
+private fun outfitsWithProductListFromUXSDK(outfits: Outfits) {
+    outfitsRecyclerView.load(
+        outfits, OutfitsTemplate.Classic(
+            isItemSwapEnabled = true
+        ),
+        ProductListScreenState.Enable(
+            productListScreenConfig = ProductListScreenConfig(
+                productListTemplate = ProductListTemplate.Standard(
+                    productListListener = ProductListListener(
+                        onOutfitItemClick = { outfitInfo, outfitItemInfo ->
+                            Toast.makeText(this, getString(R.string.outfit_item_clicked).plus(" ${outfitItemInfo.position}"), Toast.LENGTH_LONG).show()
+                        },
+                        onItemSwap = { outfitId, oldItemId, newItemId ->
+                            Log.i("ItemSwapEvent", "Event: Swap, OutfitId: $outfitId, OldItemId: $oldItemId, NewItemId: $newItemId")
+                        }
+                    )
+                )
+            )
+        )
+    )
+}
+```
+**Note:** When replacement row is open the title will change to Close and it is not configurable by Integrator.
+
+* Below is the Product List screenshot when Integrator App uses the above configurations.
+
+</br>![Image1](Screenshots/pl_with_mnm.png)
+
+**Classic Outfit Widget with some custom configurations for Product List**
+
+By default Shop CTA is displayed on left and See more options CTA displayed on right. Integrator can choose to display Shop CTA on right which automatically moves See more options CTA to left
+
+```kotlin
+val outfitsRecyclerView = findViewById<StyliticsUIApi>(R.id.outfitsRecyclerView)
+
+private fun outfitsWithProductListFromUXSDK(outfits: Outfits) {
+    outfitsRecyclerView.load(
+        outfits,
+        OutfitsTemplate.Classic(),
+        ProductListScreenState.Enable(
+            productListScreenConfig = ProductListScreenConfig(
+                productListTemplate = ProductListTemplate.Standard(
+                    productListConfig = ProductListConfig(
+                        shop = ShopViewType.Text(
+                            position = ShopViewPosition.RIGHT,
+                            fontColor = R.color.dark_yellow,
+                            fontFamilyAndWeight = R.font.amaranth
+                        ),
+                        seeMoreConfig = ProductListConfig.SeeMoreOptionsConfig(
+                            title = "More Details",
+                            fontSize = 17f,
+                            fontColor = R.color.brown,
+                            fontFamilyAndWeight = R.font.amaranth
+                        )
+                    ),
+                    productListListener = ProductListListener(
+                        onOutfitItemClick = { outfitInfo, outfitItemInfo ->
+                            Toast.makeText(this, getString(R.string.outfit_item_clicked).plus(" ${outfitItemInfo.position}"), Toast.LENGTH_LONG).show()
+                        },
+                        onItemSwap = { outfitId, oldItemId, newItemId ->
+                            Log.i("ItemSwapEvent", "Event: Swap, OutfitId: $outfitId, OldItemId: $oldItemId, NewItemId: $newItemId")
+                        }
+                    )
+                )
+            )
+        )
+    )
+}
+```
+
+* Below is the Product List screenshot when Integrator App uses the above configurations.
+
+</br>![Image1](Screenshots/pl_with_shop_switch_mnm.png)
+
