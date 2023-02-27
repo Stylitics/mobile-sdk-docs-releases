@@ -25,7 +25,6 @@ Below are the features for Classic Outfit Widget.</br>
 
 ### Classic Outfit Widget Configurations:
 
-)
 
 #### Widget Background
 
@@ -169,9 +168,6 @@ private fun classicOutfitWidgetWithProductListFromSampleApp(outfits: Outfits) {
 
 **Default Classic Outfit Widget Screen**
 
-* Below is the Classic Outfit Widget screenshot when Integrator App uses the above configurations.
-
-</br>)</br>
 
 ### Custom Configurations:
 
@@ -226,11 +222,9 @@ private fun classicDisplayWithAllCustomConfigurations(outfits: Outfits) {
 
 *_**Note**_* : For Shop the model configuration, if height and width provided by Integrator has different aspect ratio than the Image, it will leave some default space around the image and the image will be at the center.
 
-* Below is the Classic Outfit Widget screenshot when Integrator App uses the above configurations.
 
-  </br>)
 
-</br>*_**2. With some custom configurations & Listeners:**_*
+*_**2. With some custom configurations & Listeners:**_*
 
 If Integrator App provides only few configurations, UX SDK will take default configurations for missing fields.
 
@@ -268,9 +262,6 @@ private fun classicDisplayWithSomeCustomConfigurations(outfits: Outfits) {
 }         
 ```
 
-* Below is the Classic Outfit Widget screenshot when Integrator App uses the above configurations.
-
-</br>)
 
 ## Product List Screen
 
@@ -290,8 +281,6 @@ Below are the features for Product List Screen
 **Note**: It is recommended that Integrator App always provides the **onOutfitItemClick** listener implementation.
 
 ### *_**Product List Screen Configurations**_*
-
-</br>)
 
 #### Header
 
@@ -393,9 +382,7 @@ private fun classicOutfitWidgetWithProductListFromUXSDK(outfits: Outfits) {
 val outfitsRecyclerView = findViewById<StyliticsUIApi>(R.id.outfitsRecyclerView)
 outfitsRecyclerView.closeProductListScreen()
 ```
-* Below is the Product List screenshot when Integrator App uses the default configurations
 
-</br>)
 
 ### *_**Product List Screen from UX SDK with Custom Configurations**_*
 
@@ -466,9 +453,7 @@ private fun outfitsWithProductListFromUXSDK(outfits: Outfits) {
 }
 ```
 
-* Below is the Product List screenshot when Integrator App uses the above configurations.
 
-</br>)
 
 **2. With some custom configurations and listeners**
 
@@ -506,9 +491,7 @@ private fun classicDisplayWithProductListFromUXSDK(outfits: Outfits) {
 }
 ```
 
-* Below is the Product List screenshot when Integrator App uses the above configurations.
 
-</br>)
 
 
 ### 2. Product List Screen From Integrator App
@@ -674,9 +657,7 @@ private fun classicOutfitWidgetWithItemSwapEnabled(outfits: Outfits) {
 }
 ```
 
-* Below is the Classic Outfit Widget screenshot when Integrator App uses the above configurations.
 
-</br>)
 
 ### 2. Product List Screen with Mix and Match
 
@@ -725,9 +706,6 @@ private fun outfitsWithProductListFromUXSDK(outfits: Outfits) {
 ```
 **Note:** When replacement row is open the title will change to Close and it is not configurable by Integrator.
 
-* Below is the Product List screenshot when Integrator App uses the above configurations.
-
-</br>)
 
 **Classic Outfit Widget with some custom configurations for Product List**
 
@@ -771,7 +749,5 @@ private fun outfitsWithProductListFromUXSDK(outfits: Outfits) {
 }
 ```
 
-* Below is the Product List screenshot when Integrator App uses the above configurations.
 
-</br>)
 
