@@ -9,16 +9,16 @@ This is a Sample/Integrator application to showcase the integration of Stylitics
 Sample app supports below screens to showcase features of Stylitics Data and UX SDK.
 
 * *_**Configure Username and Environment**_* - This screen lets the user select and configure the username and Environment. When user hits the *_**Build Store**_* button, Data SDK Config Api is invoked to configure some required and optional configurations for the Data SDK</br>.
-  </br>)
+  
 
 * *_**Show Product Items(Grid Screen)**_* - This shows the grid of some sample data from Stylitics server that we use to showcase Data and UX SDK features.
   When user selects one of the sample product, they are navigated to the PDP screen.</br>
-  </br>)
+  
 
 * *_**PDP Screen**_* - This is Product details page which showcases some of the features like "See how to wear it" and related Outfits.
    * When user enters this screen, it fetches Outfits from the Data SDK.
    * It sends the Outfit response to the UX SDK to display Outfits data in Outfits views.</br>
-  </br>)
+  
 
 * *_**See How to Wear It**_* - * When user clicks on the "See how to wear it" button in the Product details page, 
    * It automatically scrolls down to the Outfits view created using UX SDK.
@@ -26,7 +26,7 @@ Sample app supports below screens to showcase features of Stylitics Data and UX 
    * When Outfits comes into the view port, UX SDK sends the Outfit 'view' event for the visible Outfits using engagement API in Data SDK.
    * When user selects one of the Outfit, they are navigated to the Product List screen</br>
    *_**Note**_* : If there are no outfits for an item, See How to wear it button will be hidden.
-  </br>)
+  
 
 * *_**Show Product Items**_* - This screen shows the list of all Outfit items belonging to the selected Outfit from Product details page.</br>
   * When user enters this screen, it sends item 'view' tracking events for the visible items using Data SDK's engagements API.
@@ -34,7 +34,7 @@ Sample app supports below screens to showcase features of Stylitics Data and UX 
     1. It sends 'click tracking event' using Data SDK's engagements API.
     2. If item click listener exposed by UX SDK is implemented in Integrator/Sample App, it will perform implemented action.
     3. If item click listener exposed by UX SDK is not implemented in Integrator/Sample App, it redirects to the web view.</br>
-  </br>) 
+
 
 * *_**Tracking Events**_* - This is to track the user interaction with the App by calling the engagements API implemented in Data SDK.
     1. Invoked from Data SDK
@@ -131,13 +131,13 @@ This feature enables user to view replacements for any outfit item.
 
 * *_**See more options**_* - This option is available when Mix and Match feature is enabled by the Integrator app.  
    * When user clicks on this button, UX SDK shows a list of all replacement items received from the Data SDK belonging to the selected item.</br>
-  </br>)
+  </br>
 
 * *_**Swap item in Outfit collage**_* - When user clicks on any item in Outfit collage, it will be replaced with the next item from its available replacements. For swapping it iterates through the replacement item list. When it reaches to the last item, it starts from the first item(default item) in the list</br>.
-  </br>![Image](Screenshots/item_swapping_in_collage.png)
+  
 
 * *_**Swap item in Product List**_* - When user clicks on any item in the replacements row, the currently displayed item will be replaced with the selected item.</br>
-  </br>)  
+  </br>
 
 ## iOS Versioning Support
 
