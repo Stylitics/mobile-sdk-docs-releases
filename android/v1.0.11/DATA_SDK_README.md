@@ -226,8 +226,6 @@ Following are the list of events to track user interaction with the app.
         Engagements.track(engagementsTrackingInfo)
 ```
 
-Refer below image:</br>
-</br>)
 
 
 * #### Outfit view event
