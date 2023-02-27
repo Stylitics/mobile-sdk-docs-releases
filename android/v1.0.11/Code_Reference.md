@@ -48,4 +48,4 @@ Below are the implementation details for Product details page.
 
 ## License
 
-License details and attachments will be uploaded here
+Copyright 2023 Stylitics
