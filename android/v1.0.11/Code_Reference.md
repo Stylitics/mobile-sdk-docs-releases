@@ -4,7 +4,7 @@
 This document provides the implementation details based on the App screen.
 
 ### 1. Configure Username and Environment
-)
+
 
 Below are the implementation details for Username and Environment configurations screen
 
@@ -13,14 +13,14 @@ Below are the implementation details for Username and Environment configurations
   1 *_**configureSDK()**_* - This performs the required data configurations
 
 ### 2. Show Product Items(Grid Screen)
-)
+
 
 Below are the implementation details for Show Product Items(Grid screen) screen
 
 * *_**ItemsActivity.kt**_* This class is responsible for displaying the Sample Product items.
 
 ### 3. PDP Screen
-)
+
 
 Below are the implementation details for Product details page.
 
@@ -39,7 +39,7 @@ Below are the implementation details for Product details page.
 * *_**activity_product_detail_page.xml**_* This is the XML file which holds the UI components to be displayed on the screen.
 
 ### 4. Show Product Items
-)
+
 
 * *_**OutfitItemsFragment**_* This is the bottomSheet fragment to display product list and implements the click listener. This implementation is invoked when product list screen from UX SDK is disabled.
      1. *_**updateViews()**_* This method loads the product list view implemented in the UX SDK. 
