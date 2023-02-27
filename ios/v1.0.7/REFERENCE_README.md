@@ -6,14 +6,14 @@
 * *_**BuildViewModel.swift**_* This class handles the business logic.
   1. *_**configureApisHostEnvironment()**_* - This method is used to Configure the Data SDK.
 
-)
+
 
 
 ### 2. Show Product Items(Grid Screen)
 
 * *_**ItemsViewController.swift**_* This controller is used to display the Sample Product items.
 
-)
+
 
 ### 3. PDP Screen
 
@@ -25,13 +25,13 @@
      1. *_**getClassicDisplayWithProductListScreen(outfits: Outfits)**_* This method loads the Classic Outfits Widget with the option to display Product List Screen from UX SDK. 
      2. *_**getClassicDisplayWithoutProductListScreen(outfits: Outfits)**_* This is to load the Classic Outfits Widget. Here Integrator app has to implement their own Product list screen.
 
-)
+
 
 ### 4. Product List Screen
 
 * *_**DetailsOverlayViewController.swift**_* This controller is used to display Outfit Items for the selected Outfit. It is used only when the option to display Product List Screen from UX SDK is disabled.
 
-)
+
 
 ## License
 
