@@ -1,10 +1,10 @@
-## Stylitics UX SDK
+# Stylitics UX SDK
 
 It provides views to display Stylitics data. It also handles invoking of tracking events based on user interaction with these views.
 
-### Features
+## Features
 
-SDK provides multiple custom view options to Integrator App so it can easily display Stylitics data.
+SDK provides multiple custom view options to Sample Integrator App so it can easily display Stylitics data.
 
 1. Outfits
     * Classic Outfit Widget
@@ -18,59 +18,60 @@ SDK provides multiple custom view options to Integrator App so it can easily dis
 Below are the features for Classic Outfit Widget.</br>
 
 * Configure all the UI elements for each Outfit
-* Handles Outfit 'View' and 'Click' tracking events so Integrator App does not have to do it
-* Provides listeners to Integrator App so they can handle the Outfit View and Click events
+* Handles Outfit `View` and `Click` tracking events so Sample Integrator App does not have to do it
+* Provides listeners to Sample Integrator App so they can handle the Outfit View and Click events
 * Configure whether to display Outfit Items directly from SDK or not
-    * When Outfit Items configured to display from SDK, Integrator App can provide configs for it
+    * When Outfit Items configured to display from SDK, Sample Integrator App can provide configs for it
 
 ### Classic Outfit Widget Configurations:
 
+![Image1](https://storage.googleapis.com/stylitics-misc-public/sdk-images/android/ux-sdk-readme/classic_with_top_label_stl.png)
 
-#### Widget Background
+**Widget Background**
 
-| Fields | Description | Default Value |
-| ---- | ---- | ---- |
-| widgetBackground | is the widget background drawable | R.drawable.outfit_border|
+| Fields           | Description                       | Default Value            |
+|------------------|-----------------------------------|--------------------------|
+| widgetBackground | is the widget background drawable | R.drawable.outfit_border |
 
-#### Top Label
+**Top Label**
 
-| Fields | Description | Default Value |
-| ---- | ---- | ---- |
-| backgroundColor | is the background color of top label and is accessed from drawable resource folder. | R.drawable.top_label_border |
-|fontFamilyAndWeight | is the font style with the font weight and is accessed from the font resource folder | Helvetica Neue Regular |
-| fontSize | is the size in float and internally it is converted into sp | 14f |
-| fontColor | is text color which is accessed from color.xml resource file | #212121 |
-| position | is to change top label position to top left or top right | TopLabelPosition.TOP_LEFT  |
-| paddingVertical | is top and bottom padding of the top label in float and internally it is converted to dp | 6f |
-| paddingHorizontal | is left and right padding of the top label in float and internally it is converted to dp | 16f |
+| Fields              | Description                                                                              | Default Value               |
+|---------------------|------------------------------------------------------------------------------------------|-----------------------------|
+| backgroundColor     | is the background color of top label and is accessed from drawable resource folder.      | R.drawable.top_label_border |
+| fontFamilyAndWeight | is the font style with the font weight and is accessed from the font resource folder     | Helvetica Neue Regular      |
+| fontSize            | is the size in float and internally it is converted into sp                              | 14f                         |
+| fontColor           | is text color which is accessed from color.xml resource file                             | #212121                     |
+| position            | is to change top label position to top left or top right                                 | TopLabelPosition.TOP_LEFT   |
+| paddingVertical     | is top and bottom padding of the top label in float and internally it is converted to dp | 6f                          |
+| paddingHorizontal   | is left and right padding of the top label in float and internally it is converted to dp | 16f                         |
 
-#### Bottom Label
+**Bottom Label**
 
-| Fields | Description | Default Value |
-| ---- | ---- | ---- |
-| title | to set the title of the label | View Detail |
+| Fields              | Description                                                                          | Default Value          |
+|---------------------|--------------------------------------------------------------------------------------|------------------------|
+| title               | to set the title of the label                                                        | View Detail            |
 | fontFamilyAndWeight | is the font style with the font weight and is accessed from the font resource folder | Helvetica Neue Regular |
-| fontSize | is the font size in float and internally it is converted into sp | 14f |
-| fontColor | is text color and is accessed from color.xml resource file | #212121 |
+| fontSize            | is the font size in float and internally it is converted into sp                     | 14f                    |
+| fontColor           | is text color and is accessed from color.xml resource file                           | #212121                |
 
-#### Shop The Model
+**Shop The Model**
 
-| Fields | Description | Default Value |
-| ---- | ---- | ---- |
-| name | is the name of image to be displayed for Shop the model badge and is accessed from drawable resource folder | Mandatory |
+| Fields   | Description                                                                                                                                   | Default Value                 |
+|----------|-----------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------|
+| name     | is the name of image to be displayed for Shop the model badge and is accessed from drawable resource folder                                   | Mandatory                     |
 | position | is to change the badge position to the Top Left, Top Right, Bottom Left and Bottom Right. 16dp to the top and the left is the default padding | ShopTheModelPosition.TOP_LEFT |
-| width | is the width of image view in float and internally it is converted to dp | 60f |
-| height | is the height of image view in float and internally it is converted to dp | 60f |
+| width    | is the width of image view in float and internally it is converted to dp                                                                      | 60f                           |
+| height   | is the height of image view in float and internally it is converted to dp                                                                     | 60f                           |
 
 ### Default Configurations:
 
-* Below are the examples of Classic Outfit Widget when Integrator App chooses to use default UI configurations.</br>
+* Below are the examples of Classic Outfit Widget when Sample Integrator App chooses to use default UI configurations.</br>
 
 * The Classic Outfit UI component can be implemented in below different ways.
     1. Product List enabled from SDK
     2. Product List disabled from SDK
     3. Configure Event Listeners
-    5. Shop The Model
+    4. Shop The Model
 
 *_**XML**_*
 
@@ -83,14 +84,14 @@ Below are the features for Classic Outfit Widget.</br>
 
 *_**Kotlin**_*
 
-**1. Product List enabled from SDK:**
+*_**1. Product List enabled from SDK:**_*
 
-When product list is enabled from UX SDK and Integrator App does not provide configurations, it will take default configurations from SDK.
+When product list is enabled from UX SDK and Sample Integrator App does not provide configurations, it will take default configurations from SDK.
 
 ```kotlin
 val outfitsRecyclerView = findViewById<StyliticsUIApi>(R.id.outfitsRecyclerView)
 
-private fun classicOutfitWidgetWithProductListFromUXSDK(outfits: Outfits) {
+private fun classicWidgetWithProductListFromUXSDK(outfits: Outfits) {
     outfitsRecyclerView.load(
         outfits,
         OutfitsTemplate.Classic(),
@@ -109,12 +110,12 @@ private fun classicOutfitWidgetWithProductListFromUXSDK(outfits: Outfits) {
 }
 ```
 
-**2. Product List disabled from SDK:**
+*_**2. Product List disabled from SDK:**_*
 
 ```kotlin
 val outfitsRecyclerView = findViewById<StyliticsUIApi>(R.id.outfitsRecyclerView)
 
-private fun classicOutfitWidgetWithProductListFromIntegrator(outfits: Outfits) {
+private fun classicWidgetWithProductListDisabledFromUXSDK(outfits: Outfits) {
     outfitsRecyclerView.load(
         outfits,
         OutfitsTemplate.Classic(),
@@ -123,12 +124,12 @@ private fun classicOutfitWidgetWithProductListFromIntegrator(outfits: Outfits) {
 }
 ```
 
-**3. Configure Event Listeners:**
+*_**3. Configure Event Listeners:**_*
 
 ```kotlin
 val outfitsRecyclerView = findViewById<StyliticsUIApi>(R.id.outfitsRecyclerView)
 
-private fun classicOutfitWidgetWithProductListFromIntegrator(outfits: Outfits) {
+private fun classicWidgetWithListenersConfigured(outfits: Outfits) {
     outfitsRecyclerView.load(
         outfits,
         OutfitsTemplate.Classic(
@@ -146,14 +147,14 @@ private fun classicOutfitWidgetWithProductListFromIntegrator(outfits: Outfits) {
 }
 ```
 
-**4. Shop The Model:**
+*_**4. Shop The Model:**_*
 
-If in the Outfits response, *_**on-model-image**_* flag is true & Integrator App provides a valid image for Shop The Model it will be displayed for the Outfit.
+If in the Outfits response, `on-model-image` flag is true & Sample Integrator App provides a valid image for Shop The Model it will be displayed for the Outfit.
 
 ```kotlin
 val outfitsRecyclerView = findViewById<StyliticsUIApi>(R.id.outfitsRecyclerView)
 
-private fun classicOutfitWidgetWithProductListFromSampleApp(outfits: Outfits) {
+private fun classicWidgetWithShopTheModel(outfits: Outfits) {
     outfitsRecyclerView.load(
         outfits,
         OutfitsTemplate.Classic(
@@ -168,18 +169,21 @@ private fun classicOutfitWidgetWithProductListFromSampleApp(outfits: Outfits) {
 
 **Default Classic Outfit Widget Screen**
 
+* Below is the Classic Outfit Widget screenshot when Sample Integrator App uses the above configurations.
+
+</br>![Image1](https://storage.googleapis.com/stylitics-misc-public/sdk-images/android/ux-sdk-readme/default_classic_outfit.png)</br>
 
 ### Custom Configurations:
 
-* Integrator App can customise some or all configurations & implement listeners.
-* Below are the examples of Classic Outfit Widget when Integrator App customises configurations.
+* Sample Integrator App can customise some or all configurations & implement listeners.
+* Below are the examples of Classic Outfit Widget when Sample Integrator App customises configurations.
 
 *_**1. With all configurations & Listeners:**_*
 
 ```kotlin
 val outfitsRecyclerView = findViewById<StyliticsUIApi>(R.id.outfitsRecyclerView)
 
-private fun classicDisplayWithAllCustomConfigurations(outfits: Outfits) {
+private fun classicWidgetWithAllCustomConfigurations(outfits: Outfits) {
     outfitsRecyclerView.load(
         outfits, OutfitsTemplate.Classic(
             classicConfig = ClassicConfig(
@@ -220,18 +224,20 @@ private fun classicDisplayWithAllCustomConfigurations(outfits: Outfits) {
 }         
 ```
 
-*_**Note**_* : For Shop the model configuration, if height and width provided by Integrator has different aspect ratio than the Image, it will leave some default space around the image and the image will be at the center.
+*Note : For Shop the model configuration, if height and width provided by Sample Integrator has different aspect ratio than the Image, it will leave some default space around the image and the image will be at the center*.
 
+* Below is the Classic Outfit Widget screenshot when Sample Integrator App uses the above configurations.
 
+  </br>![Image1](https://storage.googleapis.com/stylitics-misc-public/sdk-images/android/ux-sdk-readme/custom_classic_with_top_label_stl.png)
 
-*_**2. With some custom configurations & Listeners:**_*
+</br>*_**2. With some custom configurations & Listeners:**_*
 
-If Integrator App provides only few configurations, UX SDK will take default configurations for missing fields.
+If Sample Integrator App provides only few configurations, UX SDK will take default configurations for missing fields.
 
 ```kotlin
 val outfitsRecyclerView = findViewById<StyliticsUIApi>(R.id.outfitsRecyclerView)
 
-private fun classicDisplayWithSomeCustomConfigurations(outfits: Outfits) {
+private fun classicWidgetWithSomeCustomConfigurations(outfits: Outfits) {
     outfitsRecyclerView.load(
         outfits, OutfitsTemplate.Classic(
             classicConfig = ClassicConfig(
@@ -262,83 +268,88 @@ private fun classicDisplayWithSomeCustomConfigurations(outfits: Outfits) {
 }         
 ```
 
+* Below is the Classic Outfit Widget screenshot when Sample Integrator App uses the above configurations.
+
+</br>![Image1](https://storage.googleapis.com/stylitics-misc-public/sdk-images/android/ux-sdk-readme/custom_classic_with_some_config.png)
 
 ## Product List Screen
 
-* This screen is displayed when user clicks on an outfit.
+* This screen is displayed when user clicks on an Outfit.
 * There are two different ways to show Product List Screen.
     1. Product List Screen From UX SDK
-    2. Product List Screen From Integrator App
+    2. Product List Screen From Sample Integrator App
 
-### 1. Product List Screen From UX SDK
+### Product List Screen From UX SDK
 
 Below are the features for Product List Screen 
 * Configure all the UI elements for Product List Screen
-* Handles Outfit Item 'View' and 'Click' tracking events so Integrator App does not have to do it
-* Provides listeners to Integrator App so they can handle the Outfit Item View and Click events
-* If Integrator App does not implement Outfit Item click listener, a Web View is opened when user selects an Outfit Item
+* Handles Outfit Item `View` and `Click` tracking events so Sample Integrator App does not have to do it
+* Provides listeners to Sample Integrator App so they can handle the Outfit Item `View` and `Click` events
+* If Sample Integrator App does not implement Outfit Item click listener, a Web View is opened when user selects an Outfit Item
 
-**Note**: It is recommended that Integrator App always provides the **onOutfitItemClick** listener implementation.
+*Note: It is recommended that Sample Integrator App always provides the **onOutfitItemClick** listener implementation*.
 
-### *_**Product List Screen Configurations**_*
+### Product List Screen Configurations
 
-#### Header
+</br>![Image1](https://storage.googleapis.com/stylitics-misc-public/sdk-images/android/ux-sdk-readme/default_product_list_with_arrow.png)
 
-| Fields | Description | Default Value |
-| ---- | ---- | ---- |
-| title | to set the header of the screen | Product List |
+*_**Header**_*
+
+| Fields              | Description                                                                          | Default Value                |
+|---------------------|--------------------------------------------------------------------------------------|------------------------------|
+| title               | to set the header of the screen                                                      | Product List                 |
 | fontFamilyAndWeight | is the font style with the font weight and is accessed from the font resource folder | R.font.helvetica_neue_medium |
-| fontSize | is the font size in float and internally it is converted into SP | 16f |
-| fontColor | is text color and is accessed from color.xml resource file | #212121 |
+| fontSize            | is the font size in float and internally it is converted into SP                     | 16f                          |
+| fontColor           | is text color and is accessed from color.xml resource file                           | #212121                      |
 
-#### Item Name
+*_**Item Name**_*
 
-| Fields | Description | Default Value |
-| ---- | ---- | ---- |
+| Fields              | Description                                                                           | Default Value                |
+|---------------------|---------------------------------------------------------------------------------------|------------------------------|
 | fontFamilyAndWeight | is text font style with the font weight and is accessed from the font resource folder | R.font.helvetica_neue_medium |
-| fontSize | is font size in float and internally it is converted into SP | 16f |
-| fontColor | is text color which is accessed from color.xml resource file | #212121 |
+| fontSize            | is font size in float and internally it is converted into SP                          | 16f                          |
+| fontColor           | is text color which is accessed from color.xml resource file                          | #212121                      |
 
-#### Item Sale Price
+*_**Item Sale Price**_*
 
-| Fields | Description | Default Value |
-| ---- | ---- | ---- |
+| Fields              | Description                                                                               | Default Value                |
+|---------------------|-------------------------------------------------------------------------------------------|------------------------------|
 | fontFamilyAndWeight | is the text font style with the font weight and is accessed from the font resource folder | R.font.helvetica_neue_medium |
-| fontSize | is font size in float and internally it is converted into sp | 16f |
-| fontColor | is ItemSalePrice text color which is accessed from color.xml resource file | #212121 |
-| style | to show or hide the Strike Through Price | PriceStrikeThrough.SHOW |
-| slashFontColor | is strike through price text color which is accessed from color.xml resource file | #757575 |
-| decimal | is the number of digits to show after decimal point and it is accepted as a integer | 0 |
+| fontSize            | is font size in float and internally it is converted into sp                              | 16f                          |
+| fontColor           | is ItemSalePrice text color which is accessed from color.xml resource file                | #212121                      |
+| style               | to show or hide the Strike Through Price                                                  | PriceStrikeThrough.SHOW      |
+| slashFontColor      | is strike through price text color which is accessed from color.xml resource file         | #757575                      |
+| decimal             | is the number of digits to show after decimal point and it is accepted as a integer       | 0                            |
 
-#### Shop CTA
+*_**Shop CTA**_*
 
-It can be used as a Text or Button, below are the configurations for both
+It can be used as a Text or Button, below are the configurations for both.
 
 * *_**Shop Text**_*
 
-| Fields | Description | Default Value |
-| ---- | ---- | ---- |
-| title | to set the title of the text | SHOP |
+| Fields              | Description                                                                               | Default Value                |
+|---------------------|-------------------------------------------------------------------------------------------|------------------------------|
+| title               | to set the title of the text                                                              | SHOP                         |
 | fontFamilyAndWeight | is the text font style with the font weight and is accessed from the font resource folder | R.font.helvetica_neue_medium |
-| fontSize | is font size in float and internally it is converted into sp | 14f |
-| fontColor | is text color which is accessed from color.xml resource file | #212121 |
-| position | is to change shop text position to bottom left or bottom right | ShopViewPosition.LEFT |
+| fontSize            | is font size in float and internally it is converted into sp                              | 14f                          |
+| fontColor           | is text color which is accessed from color.xml resource file                              | #212121                      |
+| position            | is to change shop text position to bottom left or bottom right                            | ShopViewPosition.LEFT        |
 
 * *_**Shop Button**_*
 
-| Fields | Description | Default Value |
-| ---- | ---- | ---- |
-| title | to set the title of the text | Shop |
-| fontFamilyAndWeight | is the text font style with the font weight and is accessed from the font resource folder | R.font.helvetica_neue_medium |
-| buttonBackgroundColor | is the shop button background drawable | R.drawable.shop_button_background |
-| fontSize | is font size in float and internally it is converted into sp | 14f |
-| fontColor | is text color which is accessed from color.xml resource file | #212121 |
-| paddingVertical | is top and bottom padding of the button in float and internally it is converted to dp | 8f |
-| paddingHorizontal | is left and right padding of the button in float and internally it is converted to dp | 16f |
+| Fields                | Description                                                                               | Default Value                     |
+|-----------------------|-------------------------------------------------------------------------------------------|-----------------------------------|
+| title                 | to set the title of the text                                                              | Shop                              |
+| fontFamilyAndWeight   | is the text font style with the font weight and is accessed from the font resource folder | R.font.helvetica_neue_medium      |
+| buttonBackgroundColor | is the shop button background drawable                                                    | R.drawable.shop_button_background |
+| fontSize              | is font size in float and internally it is converted into sp                              | 14f                               |
+| fontColor             | is text color which is accessed from color.xml resource file                              | #212121                           |
+| paddingVertical       | is top and bottom padding of the button in float and internally it is converted to dp     | 8f                                |
+| paddingHorizontal     | is left and right padding of the button in float and internally it is converted to dp     | 16f                               |
 
-### *_**Product List Screen from UX SDK with Default Configurations**_*
+### Product List Screen from UX SDK with Default Configurations
 
-Below is the example of Product List Screen when Integrator App chooses to use default UI configurations.
+Below is the example of Product List Screen when Sample Integrator App chooses to use default UI configurations.
 
 *_**XML**_*
 
@@ -353,12 +364,12 @@ Below is the example of Product List Screen when Integrator App chooses to use d
 
 Below is the code to access Product List Screen from UX SDK.
 
-It is recommended that Integrator App provide the **onOutfitItemClick** listener implementation.
+It is recommended that Sample Integrator App provide the **onOutfitItemClick** listener implementation.
 
 ```kotlin
 val outfitsRecyclerView = findViewById<StyliticsUIApi>(R.id.outfitsRecyclerView)
 
-private fun classicOutfitWidgetWithProductListFromUXSDK(outfits: Outfits) {
+private fun classicWidgetWithAllProductListDefaultConfigurations(outfits: Outfits) {
     outfitsRecyclerView.load(
         outfits,
         OutfitsTemplate.Classic(),
@@ -376,17 +387,19 @@ private fun classicOutfitWidgetWithProductListFromUXSDK(outfits: Outfits) {
     )
 }
 ```
-* When Product List Screen is displayed from UX SDK, Integrator App can choose to close it using below code.
+* When Product List Screen is displayed from UX SDK, Sample Integrator App can choose to close it using below code.
 
 ```Kotlin
 val outfitsRecyclerView = findViewById<StyliticsUIApi>(R.id.outfitsRecyclerView)
 outfitsRecyclerView.closeProductListScreen()
 ```
+* Below is the Product List screenshot when Sample Integrator App uses the default configurations
 
+</br>![Image1](https://storage.googleapis.com/stylitics-misc-public/sdk-images/android/ux-sdk-readme/default_product_list.png)
 
-### *_**Product List Screen from UX SDK with Custom Configurations**_*
+### Product List Screen from UX SDK with Custom Configurations
 
-Below are the examples of Product List Screen when Integrator App chooses to use custom configurations.
+Below are the examples of Product List Screen when Sample Integrator App chooses to use custom configurations.
 
 *_**XML**_*
 
@@ -399,12 +412,12 @@ Below are the examples of Product List Screen when Integrator App chooses to use
 
 *_**Kotlin**_*
 
-**1. With All Custom Configurations and Listeners**
+*_**1. With All Custom Configurations and Listeners**_*
 
 ```kotlin
 val outfitsRecyclerView = findViewById<StyliticsUIApi>(R.id.outfitsRecyclerView)
 
-private fun outfitsWithProductListFromUXSDK(outfits: Outfits) {
+private fun classicWidgetWithAllProductListCustomConfigurations(outfits: Outfits) {
     outfitsRecyclerView.load(
         outfits,
         OutfitsTemplate.Classic(),
@@ -453,14 +466,16 @@ private fun outfitsWithProductListFromUXSDK(outfits: Outfits) {
 }
 ```
 
+* Below is the Product List screenshot when Sample Integrator App uses the above configurations.
 
+</br>![Image1](https://storage.googleapis.com/stylitics-misc-public/sdk-images/android/ux-sdk-readme/custom_product_list_view_text.png)
 
-**2. With some custom configurations and listeners**
+*_**2. With some custom configurations and listeners**_*
 
 ```kotlin
 val outfitsRecyclerView = findViewById<StyliticsUIApi>(R.id.outfitsRecyclerView)
 
-private fun classicDisplayWithProductListFromUXSDK(outfits: Outfits) {
+private fun classicWidgetWithSomeProductListCustomConfigurations(outfits: Outfits) {
     outfitsRecyclerView.load(
         outfits,
         OutfitsTemplate.Classic(),
@@ -491,17 +506,18 @@ private fun classicDisplayWithProductListFromUXSDK(outfits: Outfits) {
 }
 ```
 
+* Below is the Product List screenshot when Sample Integrator App uses the above configurations.
 
+</br>![Image1](https://storage.googleapis.com/stylitics-misc-public/sdk-images/android/ux-sdk-readme/custon_product_list_with_button.png)
 
+### Product List Screen From Sample Integrator App
 
-### 2. Product List Screen From Integrator App
-
-If Integrator App wants to implement their own Product List Screen, they need to implement Outfit click listener as shown below and create Activity/Fragment by their own.
+If Sample Integrator App wants to implement their own Product List Screen, they need to implement Outfit click listener as shown below and create Activity/Fragment by their own.
 
 ```kotlin
 val outfitsRecyclerView = findViewById<StyliticsUIApi>(R.id.outfitsRecyclerView)
 
-private fun classicDisplayWithProductListFromIntegrator(outfits: Outfits) {
+private fun classicWidgetWithProductListFromIntegrator(outfits: Outfits) {
     outfitsRecyclerView.load(
         outfits,
         OutfitsTemplate.Classic(
@@ -517,9 +533,9 @@ private fun classicDisplayWithProductListFromIntegrator(outfits: Outfits) {
 }
 ```
 
-Integrator can create their own Product List View or access and implement it from UX SDK as given below.
+Sample Integrator can create their own Product List View or access and implement it from UX SDK as given below.
 
-#### 1. Product List View with default configurations
+*_**1. Product List View with default configurations**_*
 
 Below is the code to call your own Product List Screen. 
 
@@ -530,7 +546,7 @@ private fun showProductList(outfit: Outfit) {
 }
 ```
 
-**OutfitItemsFragment** is the fragment class to show Product List Screen
+*_**OutfitItemsFragment**_* is the fragment class to show Product List Screen
 
 Add below xml code to your Fragments xml file
 
@@ -545,7 +561,7 @@ Add below xml code to your Fragments xml file
 
 *_**Kotlin**_*
 
-To load the Product List invoke below method from Fragments **onCreateView**. 
+To load the Product List invoke below method from Fragments `onCreateView`. 
 
 ```Kotlin
 val itemView: View = inflater.inflate(R.layout.outfit_items_fragment, container, false)
@@ -568,7 +584,7 @@ private fun updateViews(itemView: View) {
     }
 }
 ```
-#### 2. Product List View with custom configurations
+*_**2. Product List View with custom configurations**_*
 
 ```Kotlin
 val itemView: View = inflater.inflate(R.layout.outfit_items_fragment, container, false)
@@ -618,17 +634,17 @@ private fun updateViews(itemView: View) {
 
 ## Mix and Match (MnM)
 
-* Mix and Match (MnM) feature can be enabled or disabled from Integrator App
+* Mix and Match (MnM) feature can be enabled or disabled from Sample Integrator App
 * [Data SDK](DATA_SDK_README.md#mix-and-match) has more details to enable Mix & Match
 * When Mix and Match feature is enabled, user can swap items from -
     1. Classic Outfit Widget
     2. Product List View
-    
-### 1. Classic Outfit Widget with Mix and Match enabled
+
+### Classic Outfit Widget with Mix and Match enabled
 
  * When Mix and Match is enabled
-    * Swap action is disabled by default but Integrator can enable it
-    * Handles item swap tracking event and exposes its listener to Integrator App, for item swap event
+    * Swap action is disabled by default but Sample Integrator can enable it
+    * Handles item swap tracking event and exposes its listener to Sample Integrator App, for item swap event
  * Below is the example to enable swap action and implement the swap listener
  
 *_**XML**_*
@@ -644,7 +660,7 @@ private fun updateViews(itemView: View) {
  ```Kotlin
 val outfitsRecyclerView = findViewById<StyliticsUIApi>(R.id.outfitsRecyclerView)
 
-private fun classicOutfitWidgetWithItemSwapEnabled(outfits: Outfits) {
+private fun classicWidgetWithItemSwapEnabled(outfits: Outfits) {
     outfitsRecyclerView.load(
         outfits, OutfitsTemplate.Classic(
             classicListener = ClassicListener(
@@ -657,32 +673,34 @@ private fun classicOutfitWidgetWithItemSwapEnabled(outfits: Outfits) {
 }
 ```
 
+* Below is the Classic Outfit Widget screenshot when Sample Integrator App uses the above configurations.
 
+</br>![Image1](Screenshots/classic_outfit_mnm.png)
 
-### 2. Product List Screen with Mix and Match
+### Product List Screen with Mix and Match
 
 * When Mix and Match is enabled
     * See more options CTA will be displayed for each Outfit Item having Replacement Items
     * User can swap item from replacement row in Product List
-    * Handles item swap tracking event and exposes its listener to Integrator App, for item swap event
+    * Handles item swap tracking event and exposes its listener to Sample Integrator App, for item swap event
 
-#### See More Options
+### See More Options
 
-| Fields | Description | Default Value |
-| ---- | ---- | ---- |
-| title | is the title of text | 'See more options' |
+| Fields              | Description                                                                               | Default Value                 |
+|---------------------|-------------------------------------------------------------------------------------------|-------------------------------|
+| title               | is the title of text                                                                      | 'See more options'            |
 | fontFamilyAndWeight | is the text font style with the font weight and is accessed from the font resource folder | R.font.helvetica_neue_regular |
-|  fontSize| is font size in float and internally it is converted into sp | 12f |
-| fontColor | is text color which is accessed from color.xml resource file | #212121 |
+| fontSize            | is font size in float and internally it is converted into sp                              | 12f                           |
+| fontColor           | is text color which is accessed from color.xml resource file                              | #212121                       |
 
-**MnM with Default Configurations**
+*_**MnM with Default Configurations**_*
 
 *_**Kotlin**_*
 
  ```Kotlin
 val outfitsRecyclerView = findViewById<StyliticsUIApi>(R.id.outfitsRecyclerView)
 
-private fun outfitsWithProductListFromUXSDK(outfits: Outfits) {
+private fun classicWidgetWithItemSwapFeatureEnabled(outfits: Outfits) {
     outfitsRecyclerView.load(
         outfits, OutfitsTemplate.Classic(
             isItemSwapEnabled = true
@@ -704,17 +722,20 @@ private fun outfitsWithProductListFromUXSDK(outfits: Outfits) {
     )
 }
 ```
-**Note:** When replacement row is open the title will change to Close and it is not configurable by Integrator.
+*Note: When replacement row is open the title will change to Close and it is not configurable by Sample Integrator*.
 
+* Below is the Product List screenshot when Sample Integrator App uses the above configurations.
 
-**Classic Outfit Widget with some custom configurations for Product List**
+</br>![Image1](https://storage.googleapis.com/stylitics-misc-public/sdk-images/android/ux-sdk-readme/pl_with_mnm.png)
 
-By default Shop CTA is displayed on left and See more options CTA displayed on right. Integrator can choose to display Shop CTA on right which automatically moves See more options CTA to left
+*_**Classic Outfit Widget with some custom configurations for Product List**_*
+
+By default Shop CTA is displayed on left and See more options CTA displayed on right. Sample Integrator can choose to display Shop CTA on right which automatically moves See more options CTA to left
 
 ```kotlin
 val outfitsRecyclerView = findViewById<StyliticsUIApi>(R.id.outfitsRecyclerView)
 
-private fun outfitsWithProductListFromUXSDK(outfits: Outfits) {
+private fun classicWidgetWithSomeCustomConfigurations(outfits: Outfits) {
     outfitsRecyclerView.load(
         outfits,
         OutfitsTemplate.Classic(),
@@ -749,5 +770,6 @@ private fun outfitsWithProductListFromUXSDK(outfits: Outfits) {
 }
 ```
 
+* Below is the Product List screenshot when Sample Integrator App uses the above configurations.
 
-
+</br>![Image1](https://storage.googleapis.com/stylitics-misc-public/sdk-images/android/ux-sdk-readme/pl_with_shop_switch_mnm.png)
