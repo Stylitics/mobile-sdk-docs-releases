@@ -236,7 +236,7 @@ private fun classicWidgetWithAllCustomConfigurations(outfits: Outfits) {
 
 * Below is the Classic Outfit Widget screenshot when Sample Integrator App uses the above configurations.
 
-  </br>![Image1](Screenshots/classic_widget_with_all_custom_config.png)
+  ![classic_widget_with_all_custom_config](https://user-images.githubusercontent.com/28857/227244320-b8bc1558-e054-4a13-9582-79b96c72f1b3.png)
 
 </br>*_**2. With some custom configurations & Listeners:**_*
 
@@ -281,7 +281,7 @@ private fun classicWidgetWithSomeCustomConfigurations(outfits: Outfits) {
 
 * Below is the Classic Outfit Widget screenshot when Sample Integrator App uses the above configurations.
 
-</br>![Image1](Screenshots/classic_widget_with_some_custom_config.png)
+![classic_widget_with_some_custom_config](https://user-images.githubusercontent.com/28857/227244455-44e898e3-cacb-46f7-82e8-2cd93f5c11e0.png)
 
 ## Product List Screen
 
@@ -693,7 +693,8 @@ private fun classicWidgetWithItemSwapEnabled(outfits: Outfits) {
 
 * Below is the Classic Outfit Widget screenshot when Sample Integrator App uses the above configurations.
 
-</br>![Image1](Screenshots/classic_outfit_mnm.png)
+![classic_outfit_mnm](https://user-images.githubusercontent.com/28857/227244934-4f0dadae-eae8-4f94-8bba-2e8785cdc937.png)
+
 
 ### Product List Screen with Mix and Match
 
