@@ -135,7 +135,8 @@ private func classicWidgetWithShopTheModel(outfits: Outfits) -> UIView {
 
 - Below is the Classic Outfit Widget screenshot when Sample Integrator App uses the above configurations.
 
-![Image1](Screenshots/default_classic_outfit.png)
+![default_classic_outfit](https://user-images.githubusercontent.com/28857/227242348-d7481e30-a993-48bd-a0c4-60d209fb8113.png)
+
 
 ### Custom Configurations:
 
@@ -203,7 +204,7 @@ func classicWidgetWithAllCustomConfigurations(outfits: Outfits) -> UIView {
 
 - Below is the Classic Outfit Widget screenshot when Sample Integrator App uses the above configurations.
 
-</br>![Image1](Screenshots/classic_widget_with_all_custom_configs.png)
+![classic_widget_with_all_custom_configs](https://user-images.githubusercontent.com/28857/227242684-c65a2065-e38f-4f7a-9f15-e0a8f156838b.png)
 
 *_**2. With some custom configurations & Listeners:**_*
 
@@ -252,7 +253,7 @@ func classicWidgetWithSomeCustomConfigurations(outfits: Outfits) -> UIView {
 
 - Below is the Classic Outfit Widget screenshot when Sample Integrator App uses the above configurations.
 
-</br>![Image1](Screenshots/classic_widget_with_some_custom_configs.png)
+![classic_widget_with_some_custom_configs](https://user-images.githubusercontent.com/28857/227242909-1abe2725-9544-4963-bc1c-911dd4d18d8c.png)
 
 ## Product List Screen
 
@@ -642,7 +643,7 @@ private func classicWidgetWithMnMCustomConfigurationsOnProductListScreen(outfits
 ```
 * Below is the Product List screenshot when Sample Integrator App uses the above configurations.
 
-![Image1](Screenshots/pl_with_shop_switch_mnm.png)</br>
+![68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f7374796c69746963732d6d6973632d7075626c69632f73646b2d696d616765732f696f732f75782d73646b2d726561646d652f504c5f44656661756c745f4d65726765642e706e67](https://user-images.githubusercontent.com/28857/227243493-cd0b7306-b37f-4f0d-81fc-5efd6b423149.png)
 
 ## iOS Versioning Support
 
