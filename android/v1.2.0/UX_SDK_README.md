@@ -231,7 +231,7 @@ private fun classicWidgetWithAllCustomConfigurations(outfits: Outfits) {
 
 * Below is the Classic Outfit Widget screenshot when Sample Integrator App uses the above configurations.
 
- [classic-confic](https://user-images.githubusercontent.com/28857/231210835-c54488cf-8eb7-45be-8873-340ace454412.png)
+![classic_widget_with_all_custom_config](https://user-images.githubusercontent.com/28857/231211421-89a8d2cb-909c-49eb-a9fd-3c2a7bd7c1d2.png)
 
 
 </br>*_**2. With some custom configurations & Listeners:**_*
