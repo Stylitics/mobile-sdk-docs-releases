@@ -42,13 +42,15 @@ This initial screen lets the user select and configure a Stylitics account usern
 ### Sample Integrator Product Grid
 When the "store" is ready, the user is shown a grid of products which have outfit coverage (per the API server of the selected Environment).  Tapping on one brings the user to a sample PDP screen. Tapping on the gallery icon, the user will navigate to the Gallery screen.
 
-</br>![Image1](Screenshots/gallery_icon.png)
+![gallery_icon](https://user-images.githubusercontent.com/28857/231209565-969a651a-0161-42ae-b187-8d5501ffa73a.png)
+
 
 ### Gallery
 
 In this screen, we show multiple carousels for the outfits fetched from Stylitics server using different filters.
 
-</br>![Image1](Screenshots/gallery_screen.png)
+![gallery_screen](https://user-images.githubusercontent.com/28857/231209750-2a569451-ccce-43c6-a895-53193fc74718.png)
+
 
 ### PDP Screen 
 On this screen, basic product details are shown, in addition to a recommended client-implemented feature (jumplink / "See How to Wear It"), and the app uses the Data SDK to fetch Outfits. It sends the Outfit response data to the UX SDK to display in the Outfits Widget.
