@@ -57,7 +57,7 @@ StyliticsUIApis.load(outfits: outfits,
                      outfitsTemplate: .classic(classicConfig: ClassicConfig(topLabel: topLabelConfig)))
 ```
 
-</br>![Image1](Screenshots/label_style_1.png)
+</br>![Image1](https://storage.googleapis.com/stylitics-misc-public/ios/l1.png)
 
 
 ### Label 2
@@ -96,7 +96,7 @@ let topLabelConfig = TopLabel(label2: TopLabel.Label2(fontFamily: "calibri",
                                                       iconAndTitleSpacing: 10))
 ```
 
-</br>![Image1](Screenshots/label_style_2.png)
+</br>![Image2](https://storage.googleapis.com/stylitics-misc-public/ios/l2.png)
 
 ### Label 3
 
@@ -135,7 +135,7 @@ let topLabelConfig = TopLabel(label3: TopLabel.Label3(fontFamily: "calibri",
                                                       paddingHorizontal: 20))
 ```
 
-</br>![Image1](Screenshots/label_style_3.png)
+</br>![Image3](https://storage.googleapis.com/stylitics-misc-public/ios/l3.png)
 
 ### Label 4
 
@@ -175,7 +175,7 @@ let topLabelConfig = TopLabel(label4: TopLabel.Label4(fontFamily: "calibri",
                                                       paddingHorizontal: 20))
 ```
 
-</br>![Image1](Screenshots/label_style_4.png)
+</br>![Image4](https://storage.googleapis.com/stylitics-misc-public/ios/l5.png)
 
 ### Label 5
 
@@ -215,7 +215,7 @@ let topLabelConfig = TopLabel(label5: TopLabel.Label5(fontFamily: "calibri",
                                                       paddingHorizontal: 15))
 ```
 
-</br>![Image1](Screenshots/label_style_5.png)
+</br>![Image5](https://storage.googleapis.com/stylitics-misc-public/ios/l6.png)
 
 ### Label 6
 
@@ -263,7 +263,7 @@ let topLabelConfig = TopLabel(label6: TopLabel.Label6(fontFamily: "calibri",
                                                       paddingHorizontal: 20))
 ```
 
-</br>![Image1](Screenshots/label_style_6.png)
+</br>![Image6](https://storage.googleapis.com/stylitics-misc-public/ios/l7.png)
 
 ### Label 7
 
@@ -299,7 +299,7 @@ let topLabelConfig = TopLabel(label7: TopLabel.Label7(fontFamily: "calibri",
                                                                          alpha: 1)))
 ```
 
-</br>![Image1](Screenshots/label_style_7.png)
+</br>![Image7](https://storage.googleapis.com/stylitics-misc-public/ios/l8.png)
 
 ### Configuring All Label Styles
 

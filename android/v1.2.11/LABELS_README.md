@@ -56,7 +56,7 @@ itemsRecyclerView.load(
 )
 ```
 
-</br>![Image1](Screenshots/label_style_1.png)
+</br>![Image1](https://storage.googleapis.com/stylitics-misc-public/android/l1.png)
 
 
 ### Label 2
@@ -95,7 +95,7 @@ val topLabelConfig = TopLabel(
 )
 ```
 
-</br>![Image1](Screenshots/label_style_2.png)
+</br>![Image2](https://storage.googleapis.com/stylitics-misc-public/android/l2.png)
 
 ### Label 3
 
@@ -132,7 +132,7 @@ val topLabelConfig = TopLabel(
 )
 ```
 
-</br>![Image1](Screenshots/label_style_3.png)
+</br>![Image3](https://storage.googleapis.com/stylitics-misc-public/android/l3.png)
 
 ### Label 4
 
@@ -168,7 +168,7 @@ val topLabelConfig = TopLabel(
 )
 ```
 
-</br>![Image1](Screenshots/label_style_4.png)
+</br>![Image4](https://storage.googleapis.com/stylitics-misc-public/android/l4.png)
 
 ### Label 5
 
@@ -204,7 +204,7 @@ val topLabelConfig = TopLabel(
 )
 ```
 
-</br>![Image1](Screenshots/label_style_5.png)
+</br>![Image5](https://storage.googleapis.com/stylitics-misc-public/android/l5.png)
 
 ### Label 6
 
@@ -243,7 +243,7 @@ val topLabelConfig = TopLabel(
 )
 ```
 
-</br>![Image1](Screenshots/label_style_6.png)
+</br>![Image6](https://storage.googleapis.com/stylitics-misc-public/android/l6.png)
 
 ### Label 7
 
@@ -278,7 +278,7 @@ val topLabelConfig = TopLabel(
 )
 ```
 
-</br>![Image1](Screenshots/label_style_7.png)
+</br>![Image7](https://storage.googleapis.com/stylitics-misc-public/android/l7.png)
 
 
 ### Configuring All Label Styles
