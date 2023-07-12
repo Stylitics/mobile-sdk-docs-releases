@@ -279,7 +279,8 @@ private fun classicWidgetWithAllCustomConfigurations(outfits: Outfits) {
 
 * Below is the Classic Outfit Widget screenshot when Sample Integrator App uses the above configurations.
 
-</br>![Image1](Screenshots/classic_widget_with_all_custom_config.png)
+![classic_widget_with_all_custom_config](https://github.com/Stylitics/mobile-sdk-docs-releases/assets/28857/94d10fe3-9359-4d94-b9a0-f48a006774a8)
+
 
 </br>*_**2. With some custom configurations & Listeners:**_*
 
@@ -612,7 +613,8 @@ private fun classicWidgetWithProductListFromUXSDKAndAllCustomConfigurations(outf
 
 * Below is the Product List screenshot when Sample Integrator App uses the above configurations.
 
-</br>![Image1](Screenshots/product_list_screen_with_all_custom_config.png)
+![product_list_screen_with_all_custom_config](https://github.com/Stylitics/mobile-sdk-docs-releases/assets/28857/1b1d65eb-a3f7-47bd-a573-4353f71b9bf6)
+
 
 *_**2. With some custom configurations and listeners**_*
 
