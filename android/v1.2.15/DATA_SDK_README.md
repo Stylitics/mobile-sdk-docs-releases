@@ -94,16 +94,16 @@ StyliticsData.configure(MyApplication.getAppContext(), config = StyliticsConfig(
 To update multiple or all configuration values for Stylitics Data SDK APIs, use the below syntax:
 
 ```kotlin
-StyliticsData.configure(    
-	MyApplication.getAppContext(), 
-	config = StyliticsConfig(
-		clientName =  "ABC", 
-		enableDebugLogs = BuildConfig.DEBUG,
-		dataApisHost = DataApisHost.Staging,
-		trackingApisHost = TrackingApisHost.Staging,
-		timeout = 90,
+StyliticsData.configure(
+    MyApplication.getAppContext(),
+    config = StyliticsConfig(
+        clientName = "ABC",
+        enableDebugLogs = BuildConfig.DEBUG,
+        dataApisHost = DataApisHost.Staging,
+        trackingApisHost = TrackingApisHost.Staging,
+        timeout = 90,
         locale = "en-gb"
-	)
+    )
 )
 ```
 
