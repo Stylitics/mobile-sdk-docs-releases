@@ -57,7 +57,7 @@ StyliticsData.configure(MyApplication.getAppContext(), config = StyliticsConfig(
 
 ### Locale config
 
-To enable locale for Stylitics Data SDK:
+To enable localization for Stylitics Data SDK:
 
 ```kotlin
 StyliticsData.configure(MyApplication.getAppContext(), config = StyliticsConfig(clientName = "ABC", locale = "en-gb"))
