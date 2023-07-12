@@ -214,6 +214,11 @@ StyliticsData.outfits(filterParams) { response ->
 }
 ```
 
+The price fields that are accessible for localization in the API response are listed below.
+- `priceLocalized` - Actual product price
+- `salePriceLocalized` - Price after discount
+
+
 ### Fetch Replacements
 
 *Note: More than 1 id can be passed as a comma separated string.*
