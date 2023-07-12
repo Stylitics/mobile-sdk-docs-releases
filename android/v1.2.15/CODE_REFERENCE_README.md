@@ -47,7 +47,8 @@ Below are the implementation details for Product details page.
 
 Integrator app should add image for Shop The Model view in *_**Android resource drawable folder**_* as shown in below screenshot.
 
-</br>![Image1](Screenshots/shop_the_model_image_location.png)
+![cr1](https://github.com/Stylitics/mobile-sdk-docs-releases/assets/28857/11222d2d-0026-439b-9961-ce1ebe00248b)
+
 
 Shop The Model configuration can be done as below,
 
