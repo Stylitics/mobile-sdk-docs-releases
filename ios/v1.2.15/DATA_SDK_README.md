@@ -20,6 +20,7 @@ Integrator App must provide a valid string value for `clientName`. All other con
 - `dataApisHost `- default host(Production Environment)
 - `trackingApisHost` - default host(Production Environment)
 - `clientName` - should always be provided. It is used by Data SDK to fetch Stylitics Experience Configs to identify which features are enabled for the client. Stylitics will provide this value to you.
+- `locale` - Global config for locale. Default value is nil. When it is set to a valid locale, Data SDK APIs will retrieve the relevant data from the server and return localized data.
 
 ***Notes*** :
 
@@ -59,6 +60,17 @@ To change the timeout value for Stylitics Data SDK APIs, use the below syntax:
 ```swift
 do {
     try StyliticsDataApis.configure(config: StyliticsConfig(timeoutInSecs: 70,
+                                                            clientName: "ABC"))
+} catch {
+    print("error \(error)")
+}
+```
+
+To configure the locale value for Stylitics Data SDK APIs, use the below syntax:
+
+```swift
+do {
+    try StyliticsDataApis.configure(config: StyliticsConfig(locale: "en-gb",
                                                             clientName: "ABC"))
 } catch {
     print("error \(error)")
@@ -118,6 +130,7 @@ do {
                                                             enableDebugLogs: true,
                                                             dataApisHost: .staging,
                                                             trackingApisHost: .staging,
+                                                            locale: "en-gb",
                                                             clientName: "ABC"))
 } catch {
     print("error \(error)")
@@ -203,6 +216,30 @@ do {
     print("error \(error)")
 }
 ```
+
+### Fetch Outfits using item number and locale
+
+Note : If the Integrator App has provided a locale value in the API call, it will have higher precedence than the Global config (if configured).
+
+```swift
+let filterInfo = ["username": "xyz", "tags": "abc", "locale": "en-gb"]
+
+do {
+    try StyliticsDataApis.outfits(filterInfo: filterInfo) { response in
+        if let error = response.error {
+            print("error \(error)")
+        } else if let outfits = response.data {
+            print("Success \(outfits)")
+        }
+    }
+} catch {
+    print("error \(error)")
+}
+```
+
+The price fields that are accessible for localization in the API response are listed below.
+- `priceLocalized` - Actual product price
+- `salePriceLocalized` - Price after discount
 
 ### Fetch Replacements
 
