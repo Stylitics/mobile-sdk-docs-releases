@@ -32,7 +32,7 @@
 
 Integrator app should add image for Shop The Model view in *_**Assets**_* as shown in below screenshot.
 
-</br>![Image1](Screenshots/shop_the_model_image_location.png)
+![cr1](https://github.com/Stylitics/mobile-sdk-docs-releases/assets/28857/3cccb050-51b6-488c-9a67-814c9edfbf3c)
 
 Shop The Model configuration can be done as below,
 
