@@ -23,6 +23,7 @@ Integrator App must provide an application context and a valid string value for 
 - `trackingApisHost` - default host(Production Environment)
 - `clientName` - should always be provided. It is used by Data SDK to fetch Stylitics Experience Configs to identify which features are enabled for the client. Stylitics will provide this value to you.
 - `context` - should always be provided
+- `locale` - default value is null
 
 
 ***Notes*** :
@@ -52,6 +53,14 @@ To change the timeout value for Stylitics Data SDK APIs:
 
 ```kotlin
 StyliticsData.configure(MyApplication.getAppContext(), config = StyliticsConfig(clientName =  "ABC", timeout = 70))
+```
+
+### Locale config
+
+To enable locale for Stylitics Data SDK:
+
+```kotlin
+StyliticsData.configure(MyApplication.getAppContext(), config = StyliticsConfig(clientName = "ABC", locale = "en-gb"))
 ```
 
 ### Hosts config
@@ -94,7 +103,8 @@ StyliticsData.configure(
 		enableDebugLogs = BuildConfig.DEBUG,
 		dataApisHost = DataApisHost.Staging,
 		trackingApisHost = TrackingApisHost.Staging,
-		timeout = 90
+		timeout = 90,
+        locale = "en-gb"
 	)
 )
 ```
@@ -181,6 +191,28 @@ StyliticsData.outfits(filterParams) { response ->
 			println("API error : ${response.error}")
 		}    
 	}
+}
+```
+
+### Fetch Outfits using item number and locale
+
+*Note : If the Integrator App has provided a locale value in the global config, the locale value provided during an API call will be overridden.*
+
+```kotlin
+val filterParams = mapOf<String, Any>("username" to "xyz", "item_number" to "123456", "locale" to "en-gb")
+
+StyliticsData.outfits(filterParams) { response ->
+  when (response) {
+    is NetworkResponse.Success -> {
+      println("Success ${response.body}")
+    }
+    is NetworkResponse.NetworkError -> {
+      println("Network error : ${response.throwable}")
+    }
+    is NetworkResponse.ApiError -> {
+      println("API error : ${response.error}")
+    }
+  }
 }
 ```
 
