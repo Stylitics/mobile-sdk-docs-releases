@@ -23,7 +23,7 @@ Integrator App must provide an application context and a valid string value for 
 - `trackingApisHost` - default host(Production Environment)
 - `clientName` - should always be provided. It is used by Data SDK to fetch Stylitics Experience Configs to identify which features are enabled for the client. Stylitics will provide this value to you.
 - `context` - should always be provided
-- `locale` - default value is null
+- `locale` - Global config for locale. Default value is null. When it is set to a valid locale, Data SDK APIs will retrieve the relevant data from the server and return localized data.
 
 
 ***Notes*** :
@@ -55,9 +55,7 @@ To change the timeout value for Stylitics Data SDK APIs:
 StyliticsData.configure(MyApplication.getAppContext(), config = StyliticsConfig(clientName =  "ABC", timeout = 70))
 ```
 
-### Locale config
-
-To enable localization for Stylitics Data SDK:
+To configure the locale value for Stylitics Data SDK APIs, use the below syntax:
 
 ```kotlin
 StyliticsData.configure(MyApplication.getAppContext(), config = StyliticsConfig(clientName = "ABC", locale = "en-gb"))
@@ -196,7 +194,7 @@ StyliticsData.outfits(filterParams) { response ->
 
 ### Fetch Outfits using item number and locale
 
-*Note : If the Integrator App has provided a locale value in the global config, the locale value provided during an API call will be overridden.*
+*Note : If the Integrator App has provided a locale value in the API call, it will have higher precedence than the Global config (if configured).*
 
 ```kotlin
 val filterParams = mapOf<String, Any>("username" to "xyz", "item_number" to "123456", "locale" to "en-gb")
