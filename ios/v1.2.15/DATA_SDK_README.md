@@ -20,7 +20,7 @@ Integrator App must provide a valid string value for `clientName`. All other con
 - `dataApisHost `- default host(Production Environment)
 - `trackingApisHost` - default host(Production Environment)
 - `clientName` - should always be provided. It is used by Data SDK to fetch Stylitics Experience Configs to identify which features are enabled for the client. Stylitics will provide this value to you.
-- `locale` - Default value is nil
+- `locale` - Global config for locale. Default value is nil. When it is set to a valid locale, Data SDK APIs will retrieve the relevant data from the server and return localized data.
 
 ***Notes*** :
 
@@ -66,7 +66,7 @@ do {
 }
 ```
 
-To change the locale value for Stylitics Data SDK APIs, use the below syntax:
+To configure the locale value for Stylitics Data SDK APIs, use the below syntax:
 
 ```swift
 do {
@@ -219,7 +219,7 @@ do {
 
 ### Fetch Outfits using item number and locale
 
-Note : If the Integrator App has provided a locale value in the global config, the locale value provided during an API call will be overridden.
+Note : If the Integrator App has provided a locale value in the API call, it will have higher precedence than the Global config (if configured).
 
 ```swift
 let filterInfo = ["username": "xyz", "tags": "abc", "locale": "en-gb"]
