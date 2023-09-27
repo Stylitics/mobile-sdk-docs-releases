@@ -116,6 +116,7 @@ private fun widgetWhenProductListFromIntegrator(outfits: Outfits) {
         OutfitsTemplate.Hotspot(
           hotspotListener = HotspotListener(
             onClick = { outfitInfo ->
+              showProductList(outfitInfo.outfit)
               //Invoke Product List Screen from Integrator here
             }
           )
