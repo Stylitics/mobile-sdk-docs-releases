@@ -154,15 +154,13 @@ private fun classicWidgetWithProductListFromUXSDKAndAllDefaultConfigurations(out
     outfitsRecyclerView.load(
         outfits,
         OutfitsTemplate.Classic(),
-        ProductListScreenState.Enable(
+        productListScreenTemplate = ProductListScreenTemplate.Standard(
             productListScreenConfig = ProductListScreenConfig(
-                productListTemplate = ProductListTemplate.Standard(
-                    productListListener = ProductListListener(
-                        onOutfitItemClick = { outfitInfo, outfitItemInfo ->
-                            //Here, in addition to handling any integrator analytics, natively navigate the user to the selected item's PDP (or launch a quick shop experience).
-                            Toast.makeText(this, getString(R.string.outfit_item_clicked).plus(" ${outfitItemInfo.position}"), Toast.LENGTH_LONG).show()
-                        }
-                    )
+                productListListener = ProductListListener(
+                    onOutfitItemClick = { outfitInfo, outfitItemInfo ->
+                        //Here, in addition to handling any integrator analytics, natively navigate the user to the selected item's PDP (or launch a quick shop experience).
+                        Toast.makeText(this, getString(R.string.outfit_item_clicked).plus(" ${outfitItemInfo.position}"), Toast.LENGTH_LONG).show()
+                    }
                 )
             )
         )
@@ -203,7 +201,7 @@ private fun classicWidgetWithProductListFromUXSDKAndAllCustomConfigurations(outf
     outfitsRecyclerView.load(
         outfits,
         OutfitsTemplate.Classic(),
-        ProductListScreenState.Enable(
+        productListScreenTemplate = ProductListScreenTemplate.Standard(
             productListScreenConfig = ProductListScreenConfig(
                 itemListHeader = ProductListScreenConfig.ItemListHeader(
                     title = "Products",
@@ -213,58 +211,56 @@ private fun classicWidgetWithProductListFromUXSDKAndAllCustomConfigurations(outf
                     fontSize = 26f
                 ),
                 presentationStyle = PresentationStyle.HALF_SCREEN,
-                productListTemplate = ProductListTemplate.Standard(
-                    productListConfig = ProductListConfig(
-                        itemName = ProductListConfig.ItemName(
-                            fontFamilyAndWeight = R.font.amaranth,
-                            titleTextTransform = TitleTextTransform.UPPER,
-                            fontSize = 19f,
-                            fontColor = R.color.black
-                        ),
-                        brand = ProductListConfig.Brand(
-                            showBrand = true,
-                            fontFamilyAndWeight = R.font.baloo_bhai,
-                            fontSize = 18f,
-                            fontColor = R.color.standard_product_list_item_brand_font_color
-                        ),
-                        /*
-                            itemPrice - is to set ItemPrice configurations.
-                            priceFontColor - is the color configuration of actual price.
-                            salePriceFontColor - is the color configuration of sale price.
-                            strikeThroughPriceFontColor - is the color configuration of old price.
-                            style - is Hide or Show the strikeThroughPriceFontColor.
-                            swapPricesPosition - swaps the positions of Sale Price and Strike-Through Price.
-                        */
-                        itemPrice = ProductListConfig.ItemPrice(
-                            fontFamilyAndWeight = R.font.amaranth,
-                            fontSize = 19f,
-                            priceFontColor = R.color.black,
-                            salePriceFontColor = R.color.red,
-                            strikeThroughPriceFontColor = R.color.teal_700,
-                            style = PriceStrikeThrough.SHOW,
-                            decimal = 2,
-                            swapPricesPosition = true
-                        ),
-                        shop = ShopViewType.Text(
-                            title = "Buy Now",
-                            fontFamilyAndWeight = R.font.amaranth,
-                            fontSize = 20f,
-                            fontColor = R.color.brown
-                        ),
-                        showScrollBar = true,
-                        itemBackgroundColor = R.color.standard_product_list_item_background_color,
-                        itemDividerColor = R.color.standard_product_list_item_divider_color,
-                        hideAnchorItem = true
+                productListConfig = ProductListConfig(
+                    itemName = ProductListConfig.ItemName(
+                        fontFamilyAndWeight = R.font.amaranth,
+                        titleTextTransform = TitleTextTransform.UPPER,
+                        fontSize = 19f,
+                        fontColor = R.color.black
                     ),
-                    productListListener = ProductListListener(
-                        onOutfitItemClick = { outfitInfo, outfitItemInfo ->
-                            //Here, in addition to handling any integrator analytics, natively navigate the user to the selected item's PDP (or launch a quick shop experience).
-                            Toast.makeText(this, getString(R.string.outfit_item_clicked).plus(" ${outfitItemInfo.position}"), Toast.LENGTH_LONG).show()
-                        },
-                        onOutfitItemView = { outfitInfo, outfitItemInfo ->
-                            Log.i("OutfitItemEvent", " OutfitItem view event triggered. ${outfitInfo.outfit.id}, ${outfitItemInfo.outfitItem.name}")
-                        }
-                    )
+                    brand = ProductListConfig.Brand(
+                        showBrand = true,
+                        fontFamilyAndWeight = R.font.baloo_bhai,
+                        fontSize = 18f,
+                        fontColor = R.color.standard_product_list_item_brand_font_color
+                    ),
+                    /*
+                        itemPrice - is to set ItemPrice configurations.
+                        priceFontColor - is the color configuration of actual price.
+                        salePriceFontColor - is the color configuration of sale price.
+                        strikeThroughPriceFontColor - is the color configuration of old price.
+                        style - is Hide or Show the strikeThroughPriceFontColor.
+                        swapPricesPosition - swaps the positions of Sale Price and Strike-Through Price.
+                    */
+                    itemPrice = ProductListConfig.ItemPrice(
+                        fontFamilyAndWeight = R.font.amaranth,
+                        fontSize = 19f,
+                        priceFontColor = R.color.black,
+                        salePriceFontColor = R.color.red,
+                        strikeThroughPriceFontColor = R.color.teal_700,
+                        style = PriceStrikeThrough.SHOW,
+                        decimal = 2,
+                        swapPricesPosition = true
+                    ),
+                    shop = ShopViewType.Text(
+                        title = "Buy Now",
+                        fontFamilyAndWeight = R.font.amaranth,
+                        fontSize = 20f,
+                        fontColor = R.color.brown
+                    ),
+                    showScrollBar = true,
+                    itemBackgroundColor = R.color.standard_product_list_item_background_color,
+                    itemDividerColor = R.color.standard_product_list_item_divider_color,
+                    hideAnchorItem = true
+                ),
+                productListListener = ProductListListener(
+                    onOutfitItemClick = { outfitInfo, outfitItemInfo ->
+                        //Here, in addition to handling any integrator analytics, natively navigate the user to the selected item's PDP (or launch a quick shop experience).
+                        Toast.makeText(this, getString(R.string.outfit_item_clicked).plus(" ${outfitItemInfo.position}"), Toast.LENGTH_LONG).show()
+                    },
+                    onOutfitItemView = { outfitInfo, outfitItemInfo ->
+                        Log.i("OutfitItemEvent", " OutfitItem view event triggered. ${outfitInfo.outfit.id}, ${outfitItemInfo.outfitItem.name}")
+                    }
                 )
             )
         )
@@ -282,7 +278,7 @@ private fun classicWidgetWithProductListFromUXSDKAndAllCustomConfigurations(outf
 val outfitsRecyclerView = findViewById<StyliticsUIApi>(R.id.outfitsRecyclerView)
 
 private fun classicWidgetWithProductListFromUXSDKAndSomeCustomConfigurations(outfits: Outfits) {
-    outfitsRecyclerView?.load(
+    outfitsRecyclerView.load(
         outfits,
         OutfitsTemplate.Classic(),
         productListScreenTemplate = ProductListScreenTemplate.Standard(
@@ -290,7 +286,7 @@ private fun classicWidgetWithProductListFromUXSDKAndSomeCustomConfigurations(out
                 productListConfig = ProductListConfig(
                     itemPrice = ProductListConfig.ItemPrice(
                         fontFamilyAndWeight = R.font.amaranth,
-                        strikeThroughPriceFontColor = R.color.teal_700,
+                        strikeThroughPriceFontColor = R.color.standard_product_list_item_strike_through_price_font_color,
                         fontSize = 18f,
                         style = PriceStrikeThrough.HIDE
                     ),
@@ -333,7 +329,7 @@ private fun classicWidgetWhenProductListFromIntegrator(outfits: Outfits) {
                     showProductList(outfitInfo.outfit)
                 }
             )),
-        ProductListScreenState.Disable
+        displayProductListFromSDK = false
     )
 }
 ```
