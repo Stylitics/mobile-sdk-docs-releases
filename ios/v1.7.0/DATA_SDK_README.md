@@ -1101,20 +1101,30 @@ StyliticsDataApis.engagement(trackingInfo: engagementsTrackingInfo) { response i
 ```
 *Note: For Product list OutfitBundle Item view and click events, UIComponent will be *_**productList**_*.*
 
-### Purchase event
+### Purchase Event
 
-This event should be triggered by Sample Integrator app when user purchases any item provided by Stylitics data. It will help Stylitics provide better recommendations for the user.
+This event should be triggered by the Integrator app when a user purchases any item. It enables Stylitics to offer better recommendations for the user.
 
-Setting up the purchased items data:
+#### Setting Up Purchased Items Data
 
-Price can be sent as an Int or Double, and itemId can be sent as an Int or String as shown below.
+- `price`: Optional, can be an `Int` or `Double`.
+- `itemId`: Optional, can be an `Int` or `String`.
+- `remoteId`: Optional `String`.
+
+*Note:*
+1. It is recommended to send the `remoteId` whenever available, as Stylitics uses it to provide recommendations based on past purchases.
+2. If `price` or `itemId` is `nil`, the `PurchasedItemInfo` object will not be created.
+
+Example usage:
 
 ```swift
 let itemInfoList: [PurchasedItemInfo] = [PurchasedItemInfo(remoteId: "remoteId123", itemId: "1234", price: 12.34)!]
                               OR
 let itemInfoList: [PurchasedItemInfo] = [PurchasedItemInfo(remoteId: "remoteId123", itemId: "25634", price: 54)!]
                               OR
-let itemInfoList: [PurchasedItemInfo] = [PurchasedItemInfo(remoteId: "remoteId123", itemId: 25634, price: 54.12)!]                     
+let itemInfoList: [PurchasedItemInfo] = [PurchasedItemInfo(remoteId: "remoteId123", itemId: 25634, price: 54.12)!]
+                              OR
+let itemInfoList: [PurchasedItemInfo] = [PurchasedItemInfo(remoteId: nil, itemId: 1234, price: 54.12)!]                                   
 ```
 
 When order id is not available:
