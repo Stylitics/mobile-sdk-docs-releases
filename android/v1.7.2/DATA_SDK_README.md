@@ -1036,16 +1036,6 @@ This event should be triggered by the Integrator app when a user purchases any i
 - `itemId`: Optional, can be an `Int` or `String`.
 - `remoteId`: Optional `String`.
 
-#### Extracting `itemId`
-
-- For **OutfitBundleItem**, extract it from `outfitBundleItem.itemId`.
-- For **ShopTheSetItem**, extract it from `shopTheSetItem.itemId`.
-
-#### Extracting `remoteId`
-
-- For **OutfitBundleItem**, extract it from `outfitBundleItem.remoteId`.
-- For **ShopTheSetItem**, extract it from `shopTheSetItem.remoteId`.
-
 *Note:  It is recommended to send the `remoteId` whenever available, as Stylitics uses it to provide recommendations based on past purchases.*
 
 Example usage:
