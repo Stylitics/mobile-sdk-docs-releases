@@ -1028,17 +1028,38 @@ CoroutineScope(Dispatchers.IO).launch {
 
 ### Purchase event
 
-This event should be triggered by Integrator/Sample app when user purchases any item provided by Stylitics data. It will help Stylitics provide better recommendations for the user.
+This event should be triggered by the Integrator app when a user purchases any item. It enables Stylitics to offer better recommendations for the user.
 
-Setting up the purchased items data:
+#### Setting up the purchased items data:
+
+- `price`: Optional, can be an `Int` or `Double`.
+- `itemId`: Optional, can be an `Int` or `String`.
+- `remoteId`: Optional `String`.
+
+#### Extracting `itemId`
+
+- For **OutfitBundleItem**, extract it from `outfitBundleItem.itemId`.
+- For **ShopTheSetItem**, extract it from `shopTheSetItem.itemId`.
+
+#### Extracting `remoteId`
+
+- For **OutfitBundleItem**, extract it from `outfitBundleItem.remoteId`.
+- For **ShopTheSetItem**, extract it from `shopTheSetItem.remoteId`.
+
+*Note:  It is recommended to send the `remoteId` whenever available, as Stylitics uses it to provide recommendations based on past purchases.*
+
+Example usage:
 
 ```kotlin
-val itemInfoList:PurchasedItemInfo = PurchasedItemInfo(remoteId = "RemoteId123", itemId = 1234, price = 12.34)
+val itemInfoList: List<PurchasedItemInfo> = listOf(PurchasedItemInfo(remoteId = "RemoteId123", itemId = 1234, price = 12.34))
                                         OR
-val itemInfoList:PurchasedItemInfo = PurchasedItemInfo(remoteId = "RemoteId123", itemId = "1234", price = 12.34)
+val itemInfoList: List<PurchasedItemInfo> = listOf(PurchasedItemInfo(remoteId = "RemoteId123", itemId = "1234", price = 12.34))
                                         OR
-val itemInfoList:PurchasedItemInfo = PurchasedItemInfo(remoteId = "RemoteId123", itemId = "1234", price = 12)
+val itemInfoList: List<PurchasedItemInfo> = listOf(PurchasedItemInfo(remoteId = "RemoteId123", itemId = "1234", price = 12))
+                                        OR
+val itemInfoList: List<PurchasedItemInfo> = listOf(PurchasedItemInfo(remoteId = null, itemId = 1234, price = 12.34))
 ```
+
 
 When order id is not available:
 
