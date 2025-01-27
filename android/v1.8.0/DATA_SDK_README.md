@@ -987,9 +987,11 @@ This event should be triggered by the Integrator app when a user purchases any i
 
 #### Setting up the purchased items data:
 
-- `price`: Optional, can be an `Int` or `Double`.
-- `itemId`: Optional, can be an `Int` or `String`.
-- `remoteId`: Optional `String`.
+- `price`: Required; An `Int` or `Double`.
+- `remoteId`: Required; A `String`.
+    -  Typically the SKU value or whichever unique identifier you have asked Stylitics to use; 
+- `itemId`: Optional; An `Int` or `String`.
+    -  Internal Stylitics Id; 
 
 #### Extracting `itemId`
 
